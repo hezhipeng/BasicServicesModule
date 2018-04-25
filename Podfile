@@ -6,4 +6,11 @@ use_frameworks!
 target 'BasicServicesModule' do
   pod 'Moya/RxSwift'
   pod 'PKHUD'
+  pod "RxSwift"
+  pod "RxCocoa"
+  pod "SnapKit"
+  pod "CryptoSwift",       '~> 0.8.3'
+  pod "SwiftyAttributes"
+  pod "SwifterSwift",       '~> 4.1.1'
+  pod "AppFolder"
 end

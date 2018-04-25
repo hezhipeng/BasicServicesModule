@@ -38,10 +38,10 @@ Pod::Spec.new do |s|
   
   s.dependency "RxSwift"
   s.dependency "RxCocoa"
-  s.dependency "SnapKit"
+  s.dependency "SnapKit",           '~> 3.2.0'
   s.dependency "CryptoSwift",       '~> 0.8.3'
   s.dependency "SwiftyAttributes"
-  s.dependency "SwifterSwift"
+  s.dependency "SwifterSwift",      '~> 4.1.1'
   s.dependency "AppFolder"
 
 end
