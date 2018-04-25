@@ -8,11 +8,15 @@
 
 import Foundation
 
-extension UIViewController {
+extension UIViewController: SelfAware {
+    
+    static func awake() {
+        UIViewController.classInit()
+    }
     
     // MARK: - Method Swizzling
 
-    class func classInit() {
+    public class func classInit() {
         swizzleMethod
     }
     

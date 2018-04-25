@@ -11,7 +11,7 @@ PODS:
     - RxCocoa
     - RxSwift
     - SnapKit
-    - SwifterSwift (~> 4.1.1)
+    - SwifterSwift
     - SwiftyAttributes
   - BasicServicesModule/Core (0.1):
     - AppFolder
@@ -19,7 +19,7 @@ PODS:
     - RxCocoa
     - RxSwift
     - SnapKit
-    - SwifterSwift (~> 4.1.1)
+    - SwifterSwift
     - SwiftyAttributes
   - BasicServicesModule/Indicator (0.1):
     - AppFolder
@@ -28,7 +28,7 @@ PODS:
     - RxCocoa
     - RxSwift
     - SnapKit
-    - SwifterSwift (~> 4.1.1)
+    - SwifterSwift
     - SwiftyAttributes
   - BasicServicesModule/Navigation (0.1):
     - AppFolder
@@ -37,7 +37,7 @@ PODS:
     - RxCocoa
     - RxSwift
     - SnapKit
-    - SwifterSwift (~> 4.1.1)
+    - SwifterSwift
     - SwiftyAttributes
   - BasicServicesModule/Network (0.1):
     - AppFolder
@@ -46,7 +46,7 @@ PODS:
     - RxCocoa
     - RxSwift
     - SnapKit
-    - SwifterSwift (~> 4.1.1)
+    - SwifterSwift
     - SwiftyAttributes
   - CryptoSwift (0.8.3)
   - Moya/Core (11.0.2):
@@ -100,7 +100,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AppFolder: d10ba19488bd441d60ffcf96eb2ab639a4825231
-  BasicServicesModule: 8876e9eede41ef45f4b6dc3e7c644000802a82d1
+  BasicServicesModule: 4baabd6dad2a08683d312c53d1ecc75253d97882
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   PKHUD: 3c001512c6e002091184197a8de7a20420786e3b

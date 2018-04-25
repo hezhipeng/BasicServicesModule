@@ -11,17 +11,17 @@ import PKHUD
 
 extension UIViewController {
     
-    func showLoading() {
+    public func showLoading() {
         HUD.dimsBackground = false
         HUD.allowsInteraction = false
-        HUD.show(.progress, onView: self.view)
+        HUD.show(.systemActivity, onView: self.view)
     }
     
-    func hideLoading() {
+    public func hideLoading() {
         HUD.hide()
     }
     
-    func promptMessage(_ message: String?) {
+    public func promptMessage(_ message: String?) {
         
         if let msg = message,
             msg.count > 0 {
