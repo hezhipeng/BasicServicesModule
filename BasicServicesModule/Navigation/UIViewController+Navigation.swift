@@ -8,27 +8,21 @@
 
 import Foundation
 
-extension UIViewController: SelfAware {
-    
-    // MARK: - SelfAware Protocol
-
-    public static func awake() {
-        UIViewController.classInit()
-    }
+extension UIViewController {
     
     // MARK: - Method Swizzling
-    
-    private static func classInit() {
+
+    class func classInit() {
         swizzleMethod
     }
     
-    private static let swizzleMethod: Void = {
+    static let swizzleMethod: Void = {
         let originalSelector = #selector(viewWillAppear(_:))
         let swizzledSelector = #selector(swizzled_viewWillAppear(_:))
         swizzlingForClass(UIViewController.self, originalSelector: originalSelector, swizzledSelector: swizzledSelector)
     }()
     
-    private static func swizzlingForClass(_ forClass: AnyClass, originalSelector: Selector, swizzledSelector: Selector) {
+    static func swizzlingForClass(_ forClass: AnyClass, originalSelector: Selector, swizzledSelector: Selector) {
         let originalMethod = class_getInstanceMethod(forClass, originalSelector)
         let swizzledMethod = class_getInstanceMethod(forClass, swizzledSelector)
         guard (originalMethod != nil && swizzledMethod != nil) else {

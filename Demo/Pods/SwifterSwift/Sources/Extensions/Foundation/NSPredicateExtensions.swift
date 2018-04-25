@@ -6,22 +6,21 @@
 //  Copyright © 2017 SwifterSwift
 //
 
-#if canImport(Foundation)
 import Foundation
 
 // MARK: - Properties
 public extension NSPredicate {
-
+	
 	/// SwifterSwift: Returns a new predicate formed by NOT-ing the predicate.
 	public var not: NSCompoundPredicate {
 		return NSCompoundPredicate(notPredicateWithSubpredicate: self)
 	}
-
+	
 }
 
 // MARK: - Methods
 public extension NSPredicate {
-
+	
 	/// SwifterSwift: Returns a new predicate formed by AND-ing the argument to the predicate.
 	///
 	/// - Parameter predicate: NSPredicate
@@ -29,7 +28,7 @@ public extension NSPredicate {
 	public func and(_ predicate: NSPredicate) -> NSCompoundPredicate {
 		return NSCompoundPredicate(andPredicateWithSubpredicates: [self, predicate])
 	}
-
+	
 	/// SwifterSwift: Returns a new predicate formed by OR-ing the argument to the predicate.
 	///
 	/// - Parameter predicate: NSPredicate
@@ -37,19 +36,19 @@ public extension NSPredicate {
 	public func or(_ predicate: NSPredicate) -> NSCompoundPredicate {
 		return NSCompoundPredicate(orPredicateWithSubpredicates: [self, predicate])
 	}
-
+	
 }
 
 // MARK: - Operators
 public extension NSPredicate {
-
+	
 	/// SwifterSwift: Returns a new predicate formed by NOT-ing the predicate.
 	/// - Parameters: rhs: NSPredicate to convert.
 	/// - Returns: NSCompoundPredicate
 	static public prefix func ! (rhs: NSPredicate) -> NSCompoundPredicate {
 		return rhs.not
 	}
-
+	
 	/// SwifterSwift: Returns a new predicate formed by AND-ing the argument to the predicate.
 	///
 	/// - Parameters:
@@ -59,7 +58,7 @@ public extension NSPredicate {
 	static public func + (lhs: NSPredicate, rhs: NSPredicate) -> NSCompoundPredicate {
 		return lhs.and(rhs)
 	}
-
+	
 	/// SwifterSwift: Returns a new predicate formed by OR-ing the argument to the predicate.
 	///
 	/// - Parameters:
@@ -69,7 +68,7 @@ public extension NSPredicate {
 	static public func | (lhs: NSPredicate, rhs: NSPredicate) -> NSCompoundPredicate {
 		return lhs.or(rhs)
 	}
-
+	
 	/// SwifterSwift: Returns a new predicate formed by remove the argument to the predicate.
 	///
 	/// - Parameters:
@@ -79,6 +78,5 @@ public extension NSPredicate {
 	static public func - (lhs: NSPredicate, rhs: NSPredicate) -> NSCompoundPredicate {
 		return lhs + !rhs
 	}
-
+	
 }
-#endif

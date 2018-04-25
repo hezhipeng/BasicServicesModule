@@ -6,13 +6,12 @@
 //  Copyright © 2016 SwifterSwift
 //
 
-#if canImport(UIKit)
+#if os(iOS)
 import UIKit
 
-#if os(iOS)
 // MARK: - Methods
 public extension UISlider {
-
+	
 	/// SwifterSwift: Set slide bar value with completion handler.
 	///
 	/// - Parameters:
@@ -32,8 +31,6 @@ public extension UISlider {
 			completion?()
 		}
 	}
-
+	
 }
-#endif
-
 #endif

@@ -6,13 +6,12 @@
 //  Copyright © 2016 SwifterSwift
 //
 
-#if canImport(UIKit)
+#if os(iOS) || os(tvOS)
 import UIKit
 
-#if !os(watchOS)
 // MARK: - Methods
 public extension UINavigationBar {
-
+	
 	/// SwifterSwift: Set Navigation Bar title, title color and font.
 	///
 	/// - Parameters:
@@ -24,7 +23,7 @@ public extension UINavigationBar {
 		attrs[.foregroundColor] = color
 		titleTextAttributes = attrs
 	}
-
+	
 	/// SwifterSwift: Make navigation bar transparent.
 	///
 	/// - Parameter tint: tint color (default is .white).
@@ -37,7 +36,7 @@ public extension UINavigationBar {
 		titleTextAttributes = [.foregroundColor: tint]
 		shadowImage = UIImage()
 	}
-
+	
 	/// SwifterSwift: Set navigationBar background and text colors
 	///
 	/// - Parameters:
@@ -51,8 +50,6 @@ public extension UINavigationBar {
 		tintColor = text
 		titleTextAttributes = [.foregroundColor: text]
 	}
-
+	
 }
-#endif
-
 #endif

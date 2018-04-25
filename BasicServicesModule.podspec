@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "9.0"
   s.source       = { :git =>  "http://10.4.96.22/Components/BasicServicesModule.git", :tag => s.version }
-  
+  s.swift_version = "4.1"
   s.source_files  = "BasicServicesModule/"
 
   # s.default_subspec = "Core"
@@ -38,10 +38,10 @@ Pod::Spec.new do |s|
   
   s.dependency "RxSwift"
   s.dependency "RxCocoa"
-  s.dependency "SnapKit",           '~> 3.2.0'
+  s.dependency "SnapKit"
   s.dependency "CryptoSwift",       '~> 0.8.3'
   s.dependency "SwiftyAttributes"
-  s.dependency "SwifterSwift",      '~> 4.1.1'
+  s.dependency "SwifterSwift"
   s.dependency "AppFolder"
 
 end

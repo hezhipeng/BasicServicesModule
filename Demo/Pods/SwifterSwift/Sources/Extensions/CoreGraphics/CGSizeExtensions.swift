@@ -6,20 +6,15 @@
 //  Copyright © 2016 SwifterSwift
 //
 
-#if canImport(CoreGraphics)
-import CoreGraphics
-
-#if canImport(UIKit)
-import UIKit
-#endif
-
-#if canImport(Cocoa)
-import Cocoa
+#if os(macOS)
+	import Cocoa
+#else
+	import UIKit
 #endif
 
 // MARK: - Methods
 public extension CGSize {
-
+	
 	/// SwifterSwift: Aspect fit CGSize.
 	///
 	///     let rect = CGSize(width: 120, height: 80)
@@ -33,7 +28,7 @@ public extension CGSize {
 		let minRatio = min(boundingSize.width / width, boundingSize.height / height)
 		return CGSize(width: width * minRatio, height: height * minRatio)
 	}
-
+	
 	/// SwifterSwift: Aspect fill CGSize.
 	///
 	///     let rect = CGSize(width: 20, height: 120)
@@ -45,10 +40,9 @@ public extension CGSize {
 	/// - Returns: self filled into given bounding size
 	public func aspectFill(to boundingSize: CGSize) -> CGSize {
 		let minRatio = max(boundingSize.width / width, boundingSize.height / height)
-		let aWidth = min(width * minRatio, boundingSize.width)
-		let aHeight = min(height * minRatio, boundingSize.height)
-		return CGSize(width: aWidth, height: aHeight)
+		let w = min(width * minRatio, boundingSize.width)
+		let h = min(height * minRatio, boundingSize.height)
+		return CGSize(width: w, height: h)
 	}
-
+	
 }
-#endif

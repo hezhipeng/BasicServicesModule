@@ -6,33 +6,26 @@
 //  Copyright © 2017 SwifterSwift
 //
 
-#if canImport(CoreGraphics)
-import CoreGraphics
-
-#if canImport(UIKit)
-import UIKit
+#if os(macOS)
+	import Cocoa
+#else
+	import UIKit
 #endif
 
-#if canImport(Cocoa)
-import Cocoa
-#endif
-
-// MARK: - Properties
 public extension CGColor {
-
-	#if canImport(UIKit)
+	
+	#if !os(macOS)
 	/// SwifterSwift: UIColor.
 	public var uiColor: UIColor? {
 		return UIColor(cgColor: self)
 	}
 	#endif
-
-	#if canImport(Cocoa)
+	
+	#if os(macOS)
 	/// SwifterSwift: NSColor.
 	public var nsColor: NSColor? {
 		return NSColor(cgColor: self)
 	}
 	#endif
-
+	
 }
-#endif
