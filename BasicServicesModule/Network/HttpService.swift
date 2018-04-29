@@ -9,11 +9,14 @@
 import Moya
 import RxSwift
 
-private var reCode = 0
+private var loginSuccessCodeVar = 0
+private var reLoginCodeVar = 0
 private var unknownErrorCode = -1
 
 public protocol HttpService {
     
+    func LoginSuccessCode() -> Int
+
     func reLoginCode() -> Int
     
     func decode<T>(response: Data,
@@ -28,6 +31,10 @@ public protocol HttpService {
 
 public extension HttpService {
     
+    func loginSuccessCode() -> Int {
+        return 200
+    }
+
     func reLoginCode() -> Int {
         return 301
     }
@@ -58,7 +65,8 @@ public extension HttpService {
                 =======================================================
                 """)
 
-            reCode = self.reLoginCode()
+            loginSuccessCodeVar = self.LoginSuccessCode()
+            reLoginCodeVar = self.reLoginCode()
             let provider = MoyaProvider<Target>()
                                         
             switch api.task {
@@ -171,11 +179,11 @@ public func parserNormal(response: Response) -> Result<Any> {
             
             let message = jsonData["message"] as? String;
             
-            if code == 200 {
+            if code == loginSuccessCodeVar {
                 let data = jsonDatax["data"]
                 return .success(data ?? [:], message)
             }
-            else if code == reCode {
+            else if code == reLoginCodeVar {
                 return .failure(.ReLogin(message: message))
             }
             else {
@@ -212,11 +220,11 @@ public func parserProgress(progressResponse: ProgressResponse) -> Result<Any> {
                     
                     let message = jsonData["message"] as? String;
                     
-                    if code == 200 {
+                    if code == loginSuccessCodeVar {
                         let data = jsonDatax["data"]
                         return .success(data ?? "Data Is Empty", message)
                     }
-                    else if code == reCode {
+                    else if code == reLoginCodeVar {
                         return .failure(ApiError.ReLogin(message: message))
                     }
                     else {

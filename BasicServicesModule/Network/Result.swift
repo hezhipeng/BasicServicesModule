@@ -35,6 +35,15 @@ public enum Result<Value> {
         }
     }
     
+    public var code: Int {
+        switch self {
+        case .success:
+            return 200
+        case .failure(let error):
+            return error.code
+        }
+    }
+    
     public var message: String? {
         switch self {
         case .success( _ , let message):
