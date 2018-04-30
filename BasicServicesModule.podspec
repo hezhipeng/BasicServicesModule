@@ -20,6 +20,12 @@ Pod::Spec.new do |s|
     ss.source_files  = "BasicServicesModule/Core"
   end
 
+  s.subspec "TabBarController" do |ss|
+    ss.source_files  = "BasicServicesModule/TabBarController/"
+	ss.dependency "RxSwift"
+ 	ss.dependency "RxCocoa"
+  end
+
   s.subspec "Network" do |ss|
     ss.source_files  = "BasicServicesModule/Network/"
     ss.dependency "Moya/RxSwift"

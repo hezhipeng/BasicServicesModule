@@ -58,10 +58,10 @@
             </objects>
             <point key="canvasLocation" x="1052" y="147.97601199400302"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller1-->
         <scene sceneID="dVg-nX-KyZ">
             <objects>
-                <viewController id="L5R-Ie-8Y2" sceneMemberID="viewController">
+                <viewController id="L5R-Ie-8Y2" customClass="ViewController1" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FWc-F2-OAg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,8 +77,8 @@
         <!--Root View Controller-->
         <scene sceneID="Xsq-RZ-Yvw">
             <objects>
-                <tableViewController id="VGM-j0-UUa" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BMa-o0-c6W">
+                <tableViewController id="VGM-j0-UUa" customClass="ViewController2" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BMa-o0-c6W" customClass="viewc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -92,16 +92,12 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="VGM-j0-UUa" id="UcN-im-ZLg"/>
-                            <outlet property="delegate" destination="VGM-j0-UUa" id="cf4-vX-AAT"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="81W-IH-SEr"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="woa-K0-Ifc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3094" y="197"/>
+            <point key="canvasLocation" x="3345" y="148"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jRQ-3g-QVt">

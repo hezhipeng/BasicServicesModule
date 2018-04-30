@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import SwifterSwift
 
 class ViewController1: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        DispatchQueue.main.async {
+//            self.navigationController?.navigationBar.shadowImage = UIImage()
+//            self.navigationController?.navigationBar.tintColor = .yellow
+//            self.navigationController?.navigationBar.setBackgroundImage(UIImage(color: .yellow, size: CGSize(width: 1, height: 1)), for: .default)
+//
+//        }
         // Do any additional setup after loading the view.
     }
 
@@ -21,6 +28,16 @@ class ViewController1: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("will appear")
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+            
+        
+        self.navigationController?.navigationBar.customBar(backgroundColor: .yellow, titleTextAttributes: [NSAttributedStringKey.foregroundColor: UIColor.red,
+                                                                                NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
+        }
+    }
 
     /*
     // MARK: - Navigation

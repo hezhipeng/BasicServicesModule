@@ -17,6 +17,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        UINavigationBar.globalCustomBar(backgroundColor: .blue, titleTextAttributes: [NSAttributedStringKey.foregroundColor: UIColor.red,
+                                                                                NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
+        let tabbar = TabBarController()
+        
+        let viewController1 = UIViewController()
+        viewController1.view.backgroundColor = UIColor.white
+        let viewController2 = UIViewController()
+        viewController2.view.backgroundColor = UIColor.lightGray
+        let viewController3 = UIViewController()
+        viewController3.view.backgroundColor = UIColor.red
+
+        tabbar.addChildViewController(childViewController: viewController1,
+                                      title: "首页",
+                                      selectedImage: "home_tab_bar_home_selected",
+                                      selectedTitleColor: UIColor.red,
+                                      normalImage: "home_tab_bar_home",
+                                      normalTitleColor: UIColor.black)
+        
+        tabbar.addChildViewController(childViewController: viewController2,
+                                      title: "订单",
+                                      selectedImage: "home_tab_bar_order_selected",
+                                      selectedTitleColor: UIColor.red,
+                                      normalImage: "home_tab_bar_order",
+                                      normalTitleColor: UIColor.black)
+        
+        tabbar.addChildViewController(childViewController: viewController3,
+                                      title: "我的",
+                                      selectedImage: "home_tab_bar_mine_selected",
+                                      selectedTitleColor: UIColor.red,
+                                      normalImage: "home_tab_bar_mine",
+                                      normalTitleColor: UIColor.black)
+        
+        self.window?.rootViewController = tabbar
         return true
     }
 

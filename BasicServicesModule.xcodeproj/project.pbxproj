@@ -17,6 +17,7 @@
 		D07ADF9E209062FE00B35B2B /* SelfAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07ADF9C209062FE00B35B2B /* SelfAware.swift */; };
 		D07ADFA02090637500B35B2B /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07ADF9F2090637500B35B2B /* Resource.swift */; };
 		D07DAD1D20902557000AD05F /* BasicServicesModule.h in Headers */ = {isa = PBXBuildFile; fileRef = D07DAD1B20902557000AD05F /* BasicServicesModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0D7E17020973AEC00AC9ED5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7E16F20973AEC00AC9ED5 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		D07DAD1820902557000AD05F /* BasicServicesModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BasicServicesModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07DAD1B20902557000AD05F /* BasicServicesModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicServicesModule.h; sourceTree = "<group>"; };
 		D07DAD1C20902557000AD05F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0D7E16F20973AEC00AC9ED5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		FB7220545C702B4153F3ECED /* Pods-BasicServicesModule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasicServicesModule.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BasicServicesModule/Pods-BasicServicesModule.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 		D07DAD1A20902557000AD05F /* BasicServicesModule */ = {
 			isa = PBXGroup;
 			children = (
+				D0D7E16E20973ADE00AC9ED5 /* TabBarController */,
 				D07ADF9B209062FE00B35B2B /* Core */,
 				D07ADF99209062FE00B35B2B /* Resource */,
 				D07ADF4F2090310500B35B2B /* Network */,
@@ -130,6 +133,14 @@
 				D07DAD1C20902557000AD05F /* Info.plist */,
 			);
 			path = BasicServicesModule;
+			sourceTree = "<group>";
+		};
+		D0D7E16E20973ADE00AC9ED5 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				D0D7E16F20973AEC00AC9ED5 /* TabBarController.swift */,
+			);
+			path = TabBarController;
 			sourceTree = "<group>";
 		};
 		F830815C1F08ADB889762C9C /* Frameworks */ = {
@@ -242,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D07ADF9E209062FE00B35B2B /* SelfAware.swift in Sources */,
+				D0D7E17020973AEC00AC9ED5 /* TabBarController.swift in Sources */,
 				D07ADF5E2090334500B35B2B /* UIViewController+Indicator.swift in Sources */,
 				D07ADF542090310500B35B2B /* Result.swift in Sources */,
 				D07ADF532090310500B35B2B /* ApiError.swift in Sources */,

@@ -8,19 +8,27 @@
 
 import UIKit
 
-class ViewController2: UIViewController {
+class ViewController2: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        print("will appear")
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+            
+            
+            self.navigationController?.navigationBar.customBar(backgroundColor: .blue, titleTextAttributes: [NSAttributedStringKey.foregroundColor: UIColor.red,
+            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
+        }
+    }
 
     /*
     // MARK: - Navigation
