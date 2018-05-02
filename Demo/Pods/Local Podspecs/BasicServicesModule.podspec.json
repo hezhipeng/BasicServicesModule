@@ -1,6 +1,6 @@
 {
   "name": "BasicServicesModule",
-  "version": "0.2",
+  "version": "0.3",
   "summary": "Basic Services Module",
   "homepage": "https://github.com/hezhipeng",
   "license": "MIT",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/hezhipeng/BasicServicesModule.git",
-    "tag": "0.2"
+    "tag": "0.3"
   },
   "swift_version": "4.1",
   "source_files": "BasicServicesModule/",

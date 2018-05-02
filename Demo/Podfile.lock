@@ -1,20 +1,20 @@
 PODS:
   - Alamofire (4.7.2)
   - AppFolder (0.2.0)
-  - BasicServicesModule (0.2):
+  - BasicServicesModule (0.3):
     - AppFolder
-    - BasicServicesModule/Core (= 0.2)
-    - BasicServicesModule/Indicator (= 0.2)
-    - BasicServicesModule/Navigation (= 0.2)
-    - BasicServicesModule/Network (= 0.2)
-    - BasicServicesModule/TabBarController (= 0.2)
+    - BasicServicesModule/Core (= 0.3)
+    - BasicServicesModule/Indicator (= 0.3)
+    - BasicServicesModule/Navigation (= 0.3)
+    - BasicServicesModule/Network (= 0.3)
+    - BasicServicesModule/TabBarController (= 0.3)
     - CryptoSwift (~> 0.8.3)
     - RxCocoa
     - RxSwift
     - SnapKit
     - SwifterSwift
     - SwiftyAttributes
-  - BasicServicesModule/Core (0.2):
+  - BasicServicesModule/Core (0.3):
     - AppFolder
     - CryptoSwift (~> 0.8.3)
     - RxCocoa
@@ -22,7 +22,7 @@ PODS:
     - SnapKit
     - SwifterSwift
     - SwiftyAttributes
-  - BasicServicesModule/Indicator (0.2):
+  - BasicServicesModule/Indicator (0.3):
     - AppFolder
     - CryptoSwift (~> 0.8.3)
     - PKHUD
@@ -31,7 +31,7 @@ PODS:
     - SnapKit
     - SwifterSwift
     - SwiftyAttributes
-  - BasicServicesModule/Navigation (0.2):
+  - BasicServicesModule/Navigation (0.3):
     - AppFolder
     - BasicServicesModule/Core
     - CryptoSwift (~> 0.8.3)
@@ -40,7 +40,7 @@ PODS:
     - SnapKit
     - SwifterSwift
     - SwiftyAttributes
-  - BasicServicesModule/Network (0.2):
+  - BasicServicesModule/Network (0.3):
     - AppFolder
     - CryptoSwift (~> 0.8.3)
     - Moya/RxSwift
@@ -49,7 +49,7 @@ PODS:
     - SnapKit
     - SwifterSwift
     - SwiftyAttributes
-  - BasicServicesModule/TabBarController (0.2):
+  - BasicServicesModule/TabBarController (0.3):
     - AppFolder
     - CryptoSwift (~> 0.8.3)
     - RxCocoa
@@ -109,7 +109,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AppFolder: d10ba19488bd441d60ffcf96eb2ab639a4825231
-  BasicServicesModule: 8526d9c97cffefeb0f533d1abe2a182fea8e67ba
+  BasicServicesModule: 6b60dbcab75bae0ab93b572124b8ab8b0af58485
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
