@@ -15,7 +15,7 @@ private var unknownErrorCode = -1
 
 public protocol HttpService {
     
-    func LoginSuccessCode() -> Int
+    func loginSuccessCode() -> Int
 
     func reLoginCode() -> Int
     
@@ -65,7 +65,7 @@ public extension HttpService {
                 =======================================================
                 """)
 
-            loginSuccessCodeVar = self.LoginSuccessCode()
+            loginSuccessCodeVar = self.loginSuccessCode()
             reLoginCodeVar = self.reLoginCode()
             let provider = MoyaProvider<Target>()
                                         
@@ -106,6 +106,9 @@ public extension HttpService {
             default:
                 return provider.rx.request(api)
                     .asObservable()
+                    .retry(5)
+                    .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+                    .observeOn(MainScheduler.instance)
                     .catchError({ (error) -> Observable<Response> in
 
                         if let moyaError = error as? MoyaError,

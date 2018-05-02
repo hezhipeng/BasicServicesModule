@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A12A70A529DB96118AFC769 /* Pods_BasicServicesModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9BBBFD64C50DE060DA0FD9 /* Pods_BasicServicesModule.framework */; };
+		D00C32B82097611300CC5859 /* UINavigationBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00C32B62097611300CC5859 /* UINavigationBarAppearance.swift */; };
+		D00C32B92097611300CC5859 /* UIViewControllerSingleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00C32B72097611300CC5859 /* UIViewControllerSingleAlert.swift */; };
 		D07ADF532090310500B35B2B /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07ADF502090310500B35B2B /* ApiError.swift */; };
 		D07ADF542090310500B35B2B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07ADF512090310500B35B2B /* Result.swift */; };
 		D07ADF552090310500B35B2B /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07ADF522090310500B35B2B /* HttpService.swift */; };
@@ -23,6 +25,8 @@
 /* Begin PBXFileReference section */
 		3C9BBBFD64C50DE060DA0FD9 /* Pods_BasicServicesModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BasicServicesModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B312708715B112D7F02EACBB /* Pods-BasicServicesModule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasicServicesModule.release.xcconfig"; path = "Pods/Target Support Files/Pods-BasicServicesModule/Pods-BasicServicesModule.release.xcconfig"; sourceTree = "<group>"; };
+		D00C32B62097611300CC5859 /* UINavigationBarAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBarAppearance.swift; sourceTree = "<group>"; };
+		D00C32B72097611300CC5859 /* UIViewControllerSingleAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerSingleAlert.swift; sourceTree = "<group>"; };
 		D07ADF502090310500B35B2B /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		D07ADF512090310500B35B2B /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		D07ADF522090310500B35B2B /* HttpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpService.swift; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 		D07ADF9B209062FE00B35B2B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				D00C32B62097611300CC5859 /* UINavigationBarAppearance.swift */,
+				D00C32B72097611300CC5859 /* UIViewControllerSingleAlert.swift */,
 				D07ADF9F2090637500B35B2B /* Resource.swift */,
 				D07ADF9C209062FE00B35B2B /* SelfAware.swift */,
 			);
@@ -252,10 +258,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D00C32B82097611300CC5859 /* UINavigationBarAppearance.swift in Sources */,
 				D07ADF9E209062FE00B35B2B /* SelfAware.swift in Sources */,
 				D0D7E17020973AEC00AC9ED5 /* TabBarController.swift in Sources */,
 				D07ADF5E2090334500B35B2B /* UIViewController+Indicator.swift in Sources */,
 				D07ADF542090310500B35B2B /* Result.swift in Sources */,
+				D00C32B92097611300CC5859 /* UIViewControllerSingleAlert.swift in Sources */,
 				D07ADF532090310500B35B2B /* ApiError.swift in Sources */,
 				D07ADF5F2090334500B35B2B /* UIViewController+Navigation.swift in Sources */,
 				D07ADF552090310500B35B2B /* HttpService.swift in Sources */,
