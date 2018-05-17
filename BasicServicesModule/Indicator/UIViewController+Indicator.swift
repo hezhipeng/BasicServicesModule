@@ -7,28 +7,23 @@
 //
 
 import Foundation
-import PKHUD
+import FHUD
 
 extension UIViewController {
     
     public func showLoading() {
-        HUD.dimsBackground = false
-        HUD.allowsInteraction = false
-        HUD.show(.systemActivity, onView: self.view)
+        let _ = FHUD.show(.progress(mode: .default, title: nil), onView: self.view, animated: true)
     }
     
     public func hideLoading() {
-        HUD.hide()
+        FHUD.hide(onView: self.view, animated: true)
     }
     
     public func promptMessage(_ message: String?) {
         
         if let msg = message,
             msg.count > 0 {
-            
-            HUD.dimsBackground = false
-            HUD.allowsInteraction = true
-            HUD.flash(.label(msg), delay: 2)
+            let _ = FHUD.show(.prompt(title: msg), onView: self.view, animated: true)
         }
     }
 }

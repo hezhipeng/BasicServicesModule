@@ -1,6 +1,6 @@
 {
   "name": "BasicServicesModule",
-  "version": "0.3",
+  "version": "0.4",
   "summary": "Basic Services Module",
   "homepage": "https://github.com/hezhipeng",
   "license": "MIT",
@@ -13,10 +13,10 @@
   },
   "source": {
     "git": "https://github.com/hezhipeng/BasicServicesModule.git",
-    "tag": "0.3"
+    "tag": "0.4"
   },
   "swift_version": "4.1",
-  "source_files": "BasicServicesModule/",
+  "source_files": "BasicServicesModule/*.h",
   "dependencies": {
     "RxSwift": [
 
@@ -82,7 +82,7 @@
       "name": "Indicator",
       "source_files": "BasicServicesModule/Indicator/",
       "dependencies": {
-        "PKHUD": [
+        "FHUD": [
 
         ]
       }

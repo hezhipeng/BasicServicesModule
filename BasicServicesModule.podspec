@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "9.0"
   s.source       = { :git =>  "https://github.com/hezhipeng/BasicServicesModule.git", :tag => s.version }
   s.swift_version = "4.1"
-  s.source_files  = "BasicServicesModule/"
+  s.source_files  = "BasicServicesModule/*.h"
 
   # s.default_subspec = "Core"
 
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
 
   s.subspec "Indicator" do |ss|
     ss.source_files = "BasicServicesModule/Indicator/"
-    ss.dependency "PKHUD"
+    ss.dependency "FHUD"
   end
   
   s.dependency "RxSwift"

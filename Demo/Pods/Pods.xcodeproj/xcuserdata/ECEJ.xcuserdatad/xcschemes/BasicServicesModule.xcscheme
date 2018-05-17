@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9C6A8C12A84F1B660E832DAC37D58B8C"
+               BlueprintIdentifier = "1165F92B762376EEDA2A37B6B93EE311"
                BlueprintName = "BasicServicesModule"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "BasicServicesModule.framework">

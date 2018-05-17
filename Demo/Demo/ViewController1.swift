@@ -14,6 +14,9 @@ class ViewController1: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.promptMessage("快捷")
+        self.alert("alert")
+        
 //        DispatchQueue.main.async {
 //            self.navigationController?.navigationBar.shadowImage = UIImage()
 //            self.navigationController?.navigationBar.tintColor = .yellow
