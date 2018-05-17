@@ -22,8 +22,8 @@ public enum ApiError: Error {
     /// 不知道的错误
     case URLErrorUnknown(errorCode: Int)
     
-    /// 服务器返回不正确code
-    case Service(code: Int, message: String?)
+    /// 服务器返回不正确(不是成功的code)
+    case ServiceIncorrect(code: Int, message: String?)
     /// 服务器返回重新登录
     case ReLogin(message: String?)
     /// 解码返回值出错
@@ -43,7 +43,7 @@ public enum ApiError: Error {
             return errorCode
         case .URLErrorUnknown(let errorCode):
             return errorCode
-        case .Service(let code, _ ):
+        case .ServiceIncorrect(let code, _ ):
             return code
         case .ReLogin( _ ):
             return 0
@@ -66,7 +66,7 @@ public enum ApiError: Error {
             return "网络异常，请检查网络"
         case .URLErrorUnknown:
             return "网络异常，请检查网络"
-        case .Service( _ , let message):
+        case .ServiceIncorrect( _ , let message):
             return message ?? ""
         case .ReLogin(let message):
             return message ?? "请重新登录"

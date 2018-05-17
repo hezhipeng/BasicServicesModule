@@ -35,9 +35,9 @@ public class TabBarController: UITabBarController {
                         self?.setTabBarItem(viewController: viewController,
                                             title: viewControllerInfos[index]["title"] as! String,
                                             titleSize: viewControllerInfos[index]["titleSize"] as! Int,
-                                            selectedImage: viewControllerInfos[index]["selectedImage"] as! String,
+                                            selectedImage: viewControllerInfos[index]["selectedImage"] as! UIImage,
                                             selectedTitleColor: viewControllerInfos[index]["selectedTitleColor"] as! UIColor,
-                                            normalImage: viewControllerInfos[index]["normalImage"] as! String,
+                                            normalImage: viewControllerInfos[index]["normalImage"] as! UIImage,
                                             normalTitleColor: viewControllerInfos[index]["normalTitleColor"] as! UIColor)
                     }
                 }
@@ -46,10 +46,10 @@ public class TabBarController: UITabBarController {
     
     public func addChildViewController(childViewController: UIViewController,
                                 title: String,
-                                titleSize: Int = 11,
-                                selectedImage: String,
+                                titleSize: Int = 10,
+                                selectedImage: UIImage,
                                 selectedTitleColor: UIColor,
-                                normalImage: String,
+                                normalImage: UIImage,
                                 normalTitleColor: UIColor) {
         
         let newChild = ["childViewController": childViewController,
@@ -67,15 +67,15 @@ public class TabBarController: UITabBarController {
     private func setTabBarItem(viewController: UIViewController,
                        title: String,
                        titleSize: Int,
-                       selectedImage: String,
+                       selectedImage: UIImage,
                        selectedTitleColor: UIColor,
-                       normalImage: String,
+                       normalImage: UIImage,
                        normalTitleColor: UIColor) {
         
         let tabBarItem = UITabBarItem.init(title: title,
-                                           image: UIImage(named: normalImage)?.withRenderingMode(.alwaysOriginal),
-                                           selectedImage: UIImage(named: selectedImage)?.withRenderingMode(.alwaysOriginal))
-        tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 2)
+                                           image: normalImage.withRenderingMode(.alwaysOriginal),
+                                           selectedImage: selectedImage.withRenderingMode(.alwaysOriginal))
+        tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -2)
         viewController.tabBarItem = tabBarItem
         
         UITabBarItem.appearance()

@@ -23,10 +23,8 @@ public protocol HttpService {
                    of: T.Type) throws -> T where T: Codable
     
     func networkServer<Target: TargetType>(api: Target,
-                       parser: @escaping (Response) -> Result<Any>,
-                       parserProgress: @escaping (ProgressResponse) ->Result<Any>)
+                       parser: @escaping (Response) -> (code: Int?, data: Any?, message: String?))
         -> Observable<Result<Any>>
-
 }
 
 public extension HttpService {
@@ -48,13 +46,8 @@ public extension HttpService {
     }
     
     func networkServer<Target: TargetType>(api: Target,
-                                           parser: @escaping (Response) -> Result<Any> = parserNormal,
-                                           parserProgress: @escaping
-                                                (ProgressResponse) ->
-                                                Result<Any> =
-                                                parserProgress)
+                                        parser: @escaping (Response) -> (code: Int?, data: Any?, message: String?))
         -> Observable<Result<Any>> {
-                                        
         
             print("""
                 =======================================================
@@ -85,21 +78,33 @@ public extension HttpService {
                     })
                     .map({ (progress) -> Result<Any> in
                         
-                        if progress.response?.data.count == 0,
-                            progress.response?.request == nil,
-                            progress.response?.response == nil {
+                        if self.isError(progress.response) {
                             let error = apiError(code: (progress.response?.statusCode)!)
-                            print("""
-                                -------------------------------------------------------
-                                请求异常结果
-                                接口:\(progress.response?.request?.url?.absoluteString ?? "")
-                                返回:\(error.message)
-                                -------------------------------------------------------
-                                """)
                             return  .failure(error)
                         }
                         else {
-                            return parserProgress(progress)
+                            if let _ = progress.progressObject {
+                                if progress.completed {
+                                    if let response = progress.response {
+                                        return self.processResponseData(response, parser)
+                                    }
+                                    else {
+                                        return .failure(.URLErrorUnknown(errorCode: unknownErrorCode))
+                                    }
+                                }
+                                else {
+                                    print("""
+                                        -------------------------------------------------------
+                                        请求结果
+                                        上传进度:\(progress.progress)
+                                        -------------------------------------------------------
+                                        """)
+                                    return .success(progress.progress, nil)
+                                }
+                            }
+                            else {
+                                return .failure(.URLErrorUnknown(errorCode: unknownErrorCode))
+                            }
                         }
                     })
                     .share(replay: 1)
@@ -122,26 +127,65 @@ public extension HttpService {
                     })
                     .map({ (response) -> Result<Any> in
                         
-                        if response.data.count == 0,
-                            response.request == nil,
-                            response.response == nil {
-                            
+                        if self.isError(response) {
                             let error = apiError(code: response.statusCode)
-                            print("""
-                                请求异常结果
-                                -------------------------------------------------------
-                                接口:\(response.request?.url?.absoluteString ?? "")
-                                返回:\(error.message)
-                                -------------------------------------------------------
-                                """)
                             return  .failure(error)
                         }
                         else {
-                            return parser(response)
+                            return self.processResponseData(response, parser)
                         }
                     })
                     .share(replay: 1)
             }
+    }
+    
+    private func isError(_ response: Response?) -> Bool {
+        
+        guard let response = response else {
+            return false
+        }
+        if response.data.count == 0,
+            response.request == nil,
+            response.response == nil {
+            let error = apiError(code: (response.statusCode))
+            print("""
+                -------------------------------------------------------
+                请求异常结果
+                接口:\(response.request?.url?.absoluteString ?? "")
+                返回:\(error.message)
+                -------------------------------------------------------
+                """)
+            return true
+        }
+        return false
+    }
+    
+    private func processResponseData(_ response: Response,
+                                     _ parser: @escaping (Response) -> (code: Int?, data: Any?, message: String?))
+        ->Result<Any> {
+            
+        let json = try? response.mapJSON()
+        print("""
+            -------------------------------------------------------
+            请求结果
+            接口:\(response.request?.url?.absoluteString ?? "")
+            返回值:\(json ?? "")
+            ------------------------------------------------------
+            """)
+        
+        let responseData = parser(response)
+        guard let code = responseData.code else {
+            return .failure(.URLErrorUnknown(errorCode: unknownErrorCode))
+        }
+        if code == loginSuccessCodeVar {
+            return .success(responseData.data ?? [:], responseData.message)
+        }
+        else if code == reLoginCodeVar {
+            return .failure(.ReLogin(message: responseData.message))
+        }
+        else {
+            return .failure(.ServiceIncorrect(code: code, message: responseData.message))
+        }
     }
 }
 
@@ -160,100 +204,6 @@ public func apiError(code: Int) -> ApiError {
     default:
         return .URLErrorUnknown(errorCode: unknownErrorCode)
     }
-}
-
-public func parserNormal(response: Response) -> Result<Any> {
-    
-    do {
-        let json = try response.mapJSON()
-        print("""
-            -------------------------------------------------------
-            请求结果
-            接口:\(response.request?.url?.absoluteString ?? "")
-            返回值:\(json)
-            -------------------------------------------------------
-            """)
-        
-        if let jsonDatax = json as? Dictionary<String, Any>,
-            let jsonData = jsonDatax["results"] as? Dictionary<String, Any> {
-            guard let code = jsonData["returncode"] as? Int else {
-                fatalError("resultCode不是Int")
-            }
-            
-            let message = jsonData["message"] as? String;
-            
-            if code == loginSuccessCodeVar {
-                let data = jsonDatax["data"]
-                return .success(data ?? [:], message)
-            }
-            else if code == reLoginCodeVar {
-                return .failure(.ReLogin(message: message))
-            }
-            else {
-                return .failure(.Service(code: code, message: message))
-            }
-        }
-        return .failure(.URLErrorUnknown(errorCode: unknownErrorCode))
-    } catch {
-        fatalError("response.mapJSON() exception")
-    }
-    
-}
-
-public func parserProgress(progressResponse: ProgressResponse) -> Result<Any> {
-    
-    if let _ = progressResponse.progressObject {
-        if progressResponse.completed
-        {
-            do {
-                let json = try progressResponse.response?.mapJSON()
-                print("""
-                    -------------------------------------------------------
-                    请求结果
-                    接口:\(progressResponse.response?.request?.url?.absoluteString ?? ""))
-                    返回值:\(json ?? "")
-                    -------------------------------------------------------
-                    """)
-                
-                if let jsonDatax = json as? Dictionary<String, Any>,
-                    let jsonData = jsonDatax["results"] as? Dictionary<String, Any>  {
-                    guard let code = jsonData["returncode"] as? Int else {
-                        fatalError("returncode不是Int")
-                    }
-                    
-                    let message = jsonData["message"] as? String;
-                    
-                    if code == loginSuccessCodeVar {
-                        let data = jsonDatax["data"]
-                        return .success(data ?? "Data Is Empty", message)
-                    }
-                    else if code == reLoginCodeVar {
-                        return .failure(ApiError.ReLogin(message: message))
-                    }
-                    else {
-                        return .failure(ApiError.Service(code: code, message: message ?? ""))
-                    }
-                }
-                return .failure(ApiError.URLErrorUnknown(errorCode: unknownErrorCode))
-            } catch {
-                fatalError("response.mapJSON() exception")
-            }
-            
-            
-            
-        } else {
-            print("""
-                -------------------------------------------------------
-                请求结果
-                上传进度:\(progressResponse.progress)
-                -------------------------------------------------------
-                """)
-            return .success(progressResponse.progress, nil)
-        }
-    } else {
-        return .failure(ApiError.URLErrorUnknown(errorCode: unknownErrorCode))
-    }
-    
 }
 
 extension MoyaError {

@@ -5,7 +5,7 @@ use_frameworks!
 
 target 'BasicServicesModule' do
   pod 'Moya/RxSwift'
-  pod 'PKHUD'
+  pod 'FHUD'
   pod "RxSwift"
   pod "RxCocoa"
   pod "SnapKit"

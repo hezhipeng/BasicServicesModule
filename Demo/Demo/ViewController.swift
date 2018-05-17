@@ -22,6 +22,16 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    @IBAction func click(_ sender: Any) {
+        
+        self.showLoading()
+        let _ = NetworkService.shared.login(mobileNo: "18611627579", password: "123456")
+            .subscribe(onNext: { [weak self] (result) in
+                print(result)
+                self?.hideLoading()
+            })
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         print("will appear")
         self.navigationController?.navigationBar.customBar()
