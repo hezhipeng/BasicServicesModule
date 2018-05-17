@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BasicServicesModule
+@_exported import BasicServicesModule
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -1,20 +1,20 @@
 PODS:
   - Alamofire (4.7.2)
   - AppFolder (0.2.0)
-  - BasicServicesModule (0.4):
+  - BasicServicesModule (0.5):
     - AppFolder
-    - BasicServicesModule/Core (= 0.4)
-    - BasicServicesModule/Indicator (= 0.4)
-    - BasicServicesModule/Navigation (= 0.4)
-    - BasicServicesModule/Network (= 0.4)
-    - BasicServicesModule/TabBarController (= 0.4)
+    - BasicServicesModule/Core (= 0.5)
+    - BasicServicesModule/Indicator (= 0.5)
+    - BasicServicesModule/Navigation (= 0.5)
+    - BasicServicesModule/Network (= 0.5)
+    - BasicServicesModule/TabBarController (= 0.5)
     - CryptoSwift (~> 0.8.3)
     - RxCocoa
     - RxSwift
     - SnapKit
     - SwifterSwift
     - SwiftyAttributes
-  - BasicServicesModule/Core (0.4):
+  - BasicServicesModule/Core (0.5):
     - AppFolder
     - CryptoSwift (~> 0.8.3)
     - RxCocoa
@@ -22,7 +22,7 @@ PODS:
     - SnapKit
     - SwifterSwift
     - SwiftyAttributes
-  - BasicServicesModule/Indicator (0.4):
+  - BasicServicesModule/Indicator (0.5):
     - AppFolder
     - CryptoSwift (~> 0.8.3)
     - FHUD
@@ -31,7 +31,7 @@ PODS:
     - SnapKit
     - SwifterSwift
     - SwiftyAttributes
-  - BasicServicesModule/Navigation (0.4):
+  - BasicServicesModule/Navigation (0.5):
     - AppFolder
     - BasicServicesModule/Core
     - CryptoSwift (~> 0.8.3)
@@ -40,7 +40,7 @@ PODS:
     - SnapKit
     - SwifterSwift
     - SwiftyAttributes
-  - BasicServicesModule/Network (0.4):
+  - BasicServicesModule/Network (0.5):
     - AppFolder
     - CryptoSwift (~> 0.8.3)
     - Moya/RxSwift
@@ -49,7 +49,7 @@ PODS:
     - SnapKit
     - SwifterSwift
     - SwiftyAttributes
-  - BasicServicesModule/TabBarController (0.4):
+  - BasicServicesModule/TabBarController (0.5):
     - AppFolder
     - CryptoSwift (~> 0.8.3)
     - RxCocoa
@@ -58,7 +58,7 @@ PODS:
     - SwifterSwift
     - SwiftyAttributes
   - CryptoSwift (0.8.3)
-  - FHUD (0.1)
+  - FHUD (0.2)
   - Moya/Core (11.0.2):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
@@ -111,9 +111,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AppFolder: d10ba19488bd441d60ffcf96eb2ab639a4825231
-  BasicServicesModule: 1eec25c773c8dd2997168b92984e29c89eed2939
+  BasicServicesModule: 254bfb8403601e3f340249bcbb381bc2dc389c69
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
-  FHUD: f1ce6666dfc71b13bb5176449df4e9f3fc27ad06
+  FHUD: d532de3da23df2c8c28ab105c89d3449f9281d5f
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a

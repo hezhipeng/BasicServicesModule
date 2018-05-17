@@ -107,7 +107,6 @@ class FHUDGradientRotationView: UIView {
         let layer = CAShapeLayer()
         layer.fillColor = UIColor.clear.cgColor
         layer.strokeColor = UIColor.white.cgColor
-        layer.lineJoin = kCALineCapRound
         layer.lineWidth = 3;
         layer.strokeStart = 0;
         layer.strokeEnd = 1;

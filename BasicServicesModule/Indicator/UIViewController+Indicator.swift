@@ -21,9 +21,17 @@ extension UIViewController {
     
     public func promptMessage(_ message: String?) {
         
+        FHUD.hide(onView: self.view, animated: false)
+        
         if let msg = message,
             msg.count > 0 {
-            let _ = FHUD.show(.prompt(title: msg), onView: self.view, animated: true)
+            let hud = FHUD.show(.prompt(title: msg), onView: self.view, animated: true)
+            DispatchQueue.global(qos: .userInitiated).async {
+                sleep(3)
+                DispatchQueue.main.async {
+                    hud.hide()
+                }
+            }
         }
     }
 }

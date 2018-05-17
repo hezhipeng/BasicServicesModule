@@ -29,12 +29,15 @@ class FHUDBackgroundView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        blurView?.frame = self.bounds
+    }
+    
     private func updateBackground() {
         if mode == .blur {
             let blur = UIBlurEffect(style: .light)
             let blurView = UIVisualEffectView.init(effect: blur)
-            blurView.frame = self.bounds
-            blurView.alpha = 0.9
             
             self.blurView = blurView
             self.addSubview(self.blurView!)

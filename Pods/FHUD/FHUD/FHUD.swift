@@ -17,7 +17,7 @@ public class FHUD: UIView {
                      progressTintColor: UIColor.white.withAlphaComponent(1),
                      backgroundTintColor: UIColor.white.withAlphaComponent(1),
                      imageSize: CGSize(width: 40, height: 40),
-                     offset: CGPoint(x: 0, y: 80),
+                     offset: CGPoint(x: 0, y: 60),
                      defaultContentFrame: CGRect(origin: CGPoint.zero, size: CGSize(width: 80, height: 80)),
                      defaultContentFrameForTitle: CGRect(origin: CGPoint.zero, size: CGSize(width: 100, height: 100)))
     
@@ -29,24 +29,6 @@ public class FHUD: UIView {
         let hud = FHUD.init(mode, superView)
         superView.addSubview(hud)
         hud.showAnimated(animated)
-        
-        if case .flash = mode {
-            DispatchQueue.global(qos: .userInitiated).async {
-                sleep(2)
-                DispatchQueue.main.async {
-                    FHUD.hide(onView: superView)
-                }
-            }
-        }
-        else if case .prompt = mode {
-            DispatchQueue.global(qos: .userInitiated).async {
-                sleep(2)
-                DispatchQueue.main.async {
-                    FHUD.hide(onView: superView)
-                }
-            }
-        }
-        
         return hud
     }
     
@@ -75,6 +57,12 @@ public class FHUD: UIView {
         else {
             fatalError("keyWindow is nil")
         }
+    }
+    
+    // MARK: -  instance method
+    
+    public func hide(animated: Bool = true) {
+        self.hideAnimated(animated)
     }
     
     var mode: FHUDMode = .prompt(title: "") {

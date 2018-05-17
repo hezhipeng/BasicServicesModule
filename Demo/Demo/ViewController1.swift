@@ -13,7 +13,7 @@ class ViewController1: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.promptMessage("快捷")
         self.alert("alert")
         

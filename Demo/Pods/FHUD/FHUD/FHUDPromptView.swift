@@ -52,10 +52,20 @@ class FHUDPromptView: FHUDBackgroundView {
             bounds.size.height += 20
             self.bounds = bounds
             
+            let origin = CGPoint.init(x: x, y: viewHeight - bounds.midY)
+            self.center = origin
+            
+            var safeBottom: CGFloat = 0
+            if #available(iOS 11.0, *) {
+                safeBottom = safeAreaInsets.bottom
+            } else {
+                
+            }
+            
             let xOffset = offset?.x ?? 0
             let yOffset = offset?.y ?? 0
-            let origin = CGPoint.init(x: x, y: viewHeight - bounds.midY)
-            self.center = CGPoint.init(x: origin.x + xOffset, y: origin.y - yOffset)
+            self.center = CGPoint.init(x: origin.x + xOffset, y: origin.y - yOffset - safeBottom)
+            
             
             self.titleLabel.bounds = contentBounds
             self.titleLabel.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
