@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BasicServicesModule
 
 class ViewController2: UITableViewController {
 
@@ -30,6 +31,12 @@ class ViewController2: UITableViewController {
         }
     }
 
+    /// 是否显示关闭按钮
+    ///
+    /// - Returns: Bool
+    @objc override func shouldAddCloceButton() -> Bool {
+        return false
+    }
     /*
     // MARK: - Navigation
 

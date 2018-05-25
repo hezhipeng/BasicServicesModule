@@ -49,6 +49,7 @@ public extension HttpService {
                                         parser: @escaping (Response) -> (code: Int?, data: Any?, message: String?))
         -> Observable<Result<Any>> {
         
+            #if DEBUG || ADHOC
             print("""
                 =======================================================
                                     网络请求
@@ -57,6 +58,7 @@ public extension HttpService {
                 bodyParam:\(api.task.bodyParameters()?.jsonString() ?? "")
                 =======================================================
                 """)
+            #endif
 
             loginSuccessCodeVar = self.loginSuccessCode()
             reLoginCodeVar = self.reLoginCode()
@@ -93,12 +95,14 @@ public extension HttpService {
                                     }
                                 }
                                 else {
+                                    #if DEBUG || ADHOC
                                     print("""
                                         -------------------------------------------------------
                                         请求结果
                                         上传进度:\(progress.progress)
                                         -------------------------------------------------------
                                         """)
+                                    #endif
                                     return .success(progress.progress, nil)
                                 }
                             }
@@ -148,6 +152,8 @@ public extension HttpService {
             response.request == nil,
             response.response == nil {
             let error = apiError(code: (response.statusCode))
+
+            #if DEBUG || ADHOC
             print("""
                 -------------------------------------------------------
                 请求异常结果
@@ -155,6 +161,7 @@ public extension HttpService {
                 返回:\(error.message)
                 -------------------------------------------------------
                 """)
+            #endif
             return true
         }
         return false
@@ -165,6 +172,7 @@ public extension HttpService {
         ->Result<Any> {
             
         let json = try? response.mapJSON()
+        #if DEBUG || ADHOC
         print("""
             -------------------------------------------------------
             请求结果
@@ -172,7 +180,8 @@ public extension HttpService {
             返回值:\(json ?? "")
             ------------------------------------------------------
             """)
-        
+        #endif
+
         let responseData = parser(response)
         guard let code = responseData.code else {
             return .failure(.URLErrorUnknown(errorCode: unknownErrorCode))

@@ -151,7 +151,7 @@ extension UIViewController: SelfAware {
     /// 是否显示关闭按钮
     ///
     /// - Returns: Bool
-    func shouldAddCloceButton() -> Bool {
+    @objc open func shouldAddCloceButton() -> Bool {
         if let _ = self.presentingViewController ,
             let _ = self.navigationController ,
             let count = self.navigationController?.viewControllers.count,
@@ -164,7 +164,7 @@ extension UIViewController: SelfAware {
     /// 是否显示返回按钮
     ///
     /// - Returns: Bool
-    func shouldAddBackButton() -> Bool {
+    @objc open  func shouldAddBackButton() -> Bool {
         if let navigationController = self.navigationController,
             navigationController.viewControllers.count  > 1,
             navigationController.topViewController == self {
