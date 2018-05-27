@@ -148,7 +148,7 @@ extension UIViewController: SelfAware {
         }
     }
     
-    /// 是否显示关闭按钮
+    /// 是否显示关闭按钮，view controller可自己实现该方法
     ///
     /// - Returns: Bool
     @objc open func shouldAddCloceButton() -> Bool {
@@ -161,7 +161,7 @@ extension UIViewController: SelfAware {
         return false
     }
     
-    /// 是否显示返回按钮
+    /// 是否显示返回按钮，view controller可自己实现该方法
     ///
     /// - Returns: Bool
     @objc open  func shouldAddBackButton() -> Bool {
@@ -174,13 +174,14 @@ extension UIViewController: SelfAware {
         }
     }
     
-    /// 返回或者关闭按钮事件，view controller可自己实现该方法
+    /// 返回按钮事件，view controller可自己实现该方法
     @objc public func backButtonClicked() {
         if let navigationController = self.navigationController {
             navigationController.popViewController(animated: true)
         }
     }
     
+    /// 关闭按钮事件，view controller可自己实现该方法
     @objc public func closeButtonClicked() {
         self.dismiss(animated: true, completion: nil)
     }

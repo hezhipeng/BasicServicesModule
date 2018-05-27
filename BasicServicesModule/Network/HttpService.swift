@@ -13,6 +13,9 @@ private var loginSuccessCodeVar = 0
 private var reLoginCodeVar = 0
 private var unknownErrorCode = -1
 
+public typealias JsonInfo = [String: Any]
+public typealias ResponseInfo = (code: Int?, data: Any?, message: String?)
+
 public protocol HttpService {
     
     func loginSuccessCode() -> Int
@@ -23,7 +26,7 @@ public protocol HttpService {
                    of: T.Type) throws -> T where T: Codable
     
     func networkServer<Target: TargetType>(api: Target,
-                       parser: @escaping (Response) -> (code: Int?, data: Any?, message: String?))
+                       parser: @escaping (Response) -> ResponseInfo)
         -> Observable<Result<Any>>
 }
 
@@ -46,14 +49,15 @@ public extension HttpService {
     }
     
     func networkServer<Target: TargetType>(api: Target,
-                                        parser: @escaping (Response) -> (code: Int?, data: Any?, message: String?))
+                                        parser: @escaping (Response) -> ResponseInfo)
         -> Observable<Result<Any>> {
         
             #if DEBUG || ADHOC
             print("""
                 =======================================================
                                     网络请求
-                接口:\(api.baseURL.absoluteString+api.path)
+                接口: \(api.baseURL.absoluteString+api.path)
+                get接口: \(api.baseURL.absoluteString+api.path)\(api.task.parameters()?.getURLParams() ?? "")
                 param:\(api.task.parameters()?.jsonString() ?? "" )
                 bodyParam:\(api.task.bodyParameters()?.jsonString() ?? "")
                 =======================================================
@@ -168,7 +172,7 @@ public extension HttpService {
     }
     
     private func processResponseData(_ response: Response,
-                                     _ parser: @escaping (Response) -> (code: Int?, data: Any?, message: String?))
+                                     _ parser: @escaping (Response) -> ResponseInfo)
         ->Result<Any> {
             
         let json = try? response.mapJSON()
@@ -234,20 +238,20 @@ extension MoyaError {
 
 extension Task {
     
-    func parameters() -> [String: Any]? {
+    func parameters() -> JsonInfo? {
         switch self {
         case .requestParameters(let parameters, _): return parameters
         case .requestCompositeParameters(_ , _ , let urlParameters): return urlParameters
         case .uploadCompositeMultipart(_ , let urlParameters): return urlParameters
         case .downloadParameters(let parameters, _ , _): return parameters
-        default:return nil
+        default: return nil
         }
     }
     
-    func bodyParameters() -> [String: Any]? {
+    func bodyParameters() -> JsonInfo? {
         switch self {
         case .requestCompositeParameters(let bodyParameters, _ , _): return bodyParameters
-        default:return nil
+        default: return nil
         }
     }
     
@@ -262,4 +266,13 @@ extension Dictionary {
         return jsonString
     }
     
+    func getURLParams() -> String {
+        if self.isEmpty {
+            return ""
+        }
+        else {
+            let params = self.map { "\($0)=\($1)" }
+            return "?\(params.joined(separator: "&"))"
+        }
+    }
 }

@@ -20,38 +20,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.globalCustomBar(backgroundColor: .blue, titleTextAttributes: [NSAttributedStringKey.foregroundColor: UIColor.red,
                                                                                 NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
-//        let tabbar = TabBarController()
-//        
-//        let viewController1 = ViewController1()
-//        viewController1.view.backgroundColor = UIColor.white
-//        let viewController2 = ViewController2()
-//        viewController2.view.backgroundColor = UIColor.lightGray
-//        let viewController3 = UIViewController()
-//        viewController3.view.backgroundColor = UIColor.red
-//
-//        tabbar.addChildViewController(childViewController: viewController1,
-//                                      title: "首页",
-//                                      selectedImage: UIImage(named: "home_tab_bar_home_selected")!,
-//                                      selectedTitleColor: UIColor.red,
-//                                      normalImage: UIImage(named: "home_tab_bar_home")!,
-//                                      normalTitleColor: UIColor.black)
-//        
-//        tabbar.addChildViewController(childViewController: viewController2,
-//                                      title: "订单",
-//                                      selectedImage: UIImage(named: "home_tab_bar_order_selected")!,
-//                                      selectedTitleColor: UIColor.red,
-//                                      normalImage: UIImage(named: "home_tab_bar_order")!,
-//                                      normalTitleColor: UIColor.black)
-//        
-//        tabbar.addChildViewController(childViewController: viewController3,
-//                                      title: "我的",
-//                                      selectedImage: UIImage(named: "home_tab_bar_mine_selected")!,
-//                                      selectedTitleColor: UIColor.red,
-//                                      normalImage: UIImage(named: "home_tab_bar_mine")!,
-//                                      normalTitleColor: UIColor.black)
-//        
-//        self.window?.rootViewController = tabbar
+        let tabbar = TabBarController()
+        
+        let viewController1 = ViewController1()
+        viewController1.view.backgroundColor = UIColor.white
+        let viewController2 = ViewController2()
+        viewController2.view.backgroundColor = UIColor.lightGray
+        let viewController3 = UIViewController()
+        viewController3.view.backgroundColor = UIColor.red
+
+        tabbar.addChildViewController(childViewController: viewController1,
+                                      title: "首页",
+                                      selectedImage: UIImage(named: "home_tab_bar_home_selected")!,
+                                      selectedTitleColor: UIColor.red,
+                                      normalImage: UIImage(named: "home_tab_bar_home")!,
+                                      normalTitleColor: UIColor.black)
+        
+        tabbar.addChildViewController(childViewController: viewController2,
+                                      title: "订单",
+                                      selectedImage: UIImage(named: "home_tab_bar_order_selected")!,
+                                      selectedTitleColor: UIColor.red,
+                                      normalImage: UIImage(named: "home_tab_bar_order")!,
+                                      normalTitleColor: UIColor.black)
+        
+        tabbar.addChildViewController(childViewController: viewController3,
+                                      title: "我的",
+                                      selectedImage: UIImage(named: "home_tab_bar_mine_selected")!,
+                                      selectedTitleColor: UIColor.red,
+                                      normalImage: UIImage(named: "home_tab_bar_mine")!,
+                                      normalTitleColor: UIColor.black)
+        
+        self.window?.rootViewController = tabbar
         return true
+    }
+    
+    func updateTabbar() {
+        let tabbar = TabBarController()
+        
+        let viewController1 = ViewController1()
+        viewController1.view.backgroundColor = UIColor.white
+        let viewController2 = ViewController2()
+        viewController2.view.backgroundColor = UIColor.lightGray
+        
+        tabbar.addChildViewController(childViewController: viewController1,
+                                      title: "首页",
+                                      selectedImage: UIImage(named: "home_tab_bar_home_selected")!,
+                                      selectedTitleColor: UIColor.red,
+                                      normalImage: UIImage(named: "home_tab_bar_home")!,
+                                      normalTitleColor: UIColor.black)
+        
+        tabbar.addChildViewController(childViewController: viewController2,
+                                      title: "订单",
+                                      selectedImage: UIImage(named: "home_tab_bar_order_selected")!,
+                                      selectedTitleColor: UIColor.red,
+                                      normalImage: UIImage(named: "home_tab_bar_order")!,
+                                      normalTitleColor: UIColor.black)
+        
+        self.window?.rootViewController = tabbar
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

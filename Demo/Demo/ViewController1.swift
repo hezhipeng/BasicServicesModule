@@ -8,6 +8,7 @@
 
 import UIKit
 import SwifterSwift
+import BasicServicesModule
 
 class ViewController1: UIViewController {
 
@@ -15,7 +16,6 @@ class ViewController1: UIViewController {
         super.viewDidLoad()
         
         self.promptMessage("快捷")
-        self.alert("alert")
         
 //        DispatchQueue.main.async {
 //            self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -23,9 +23,20 @@ class ViewController1: UIViewController {
 //            self.navigationController?.navigationBar.setBackgroundImage(UIImage(color: .yellow, size: CGSize(width: 1, height: 1)), for: .default)
 //
 //        }
-        // Do any additional setup after loading the view.
+        
+        
+        let btn1 = UIButton(type: .system)
+        btn1.frame = CGRect.init(x: 100, y: 200, width: 60, height: 30)
+        btn1.setTitle("更改", for: .normal)
+        btn1.addTarget(self, action: #selector(update), for: .touchUpInside)
+        self.view .addSubview(btn1)
+        
     }
 
+    deinit {
+        printLog("deinit")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -34,22 +45,19 @@ class ViewController1: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         print("will appear")
         super.viewWillAppear(animated)
+        
+        
         DispatchQueue.main.async {
             
-        
+            self.alert("alert")
+
         self.navigationController?.navigationBar.customBar(backgroundColor: .yellow, titleTextAttributes: [NSAttributedStringKey.foregroundColor: UIColor.red,
                                                                                 NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @objc func update() {
+        (UIApplication.shared.delegate as? AppDelegate)?.updateTabbar()
     }
-    */
 
 }

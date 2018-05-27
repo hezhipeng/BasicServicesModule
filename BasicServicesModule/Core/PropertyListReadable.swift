@@ -14,7 +14,7 @@ import Foundation
  *  借用：http://redqueencoder.com/property-lists-and-user-defaults-in-swift/
  */
 
-protocol PropertyListReadable {
+public protocol PropertyListReadable {
     func propertyListRepresentation() -> NSDictionary
     init?(propertyListRepresentation:NSDictionary?)
 }

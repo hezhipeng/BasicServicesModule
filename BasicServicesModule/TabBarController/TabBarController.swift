@@ -7,83 +7,83 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 public class TabBarController: UITabBarController {
-
-    private let viewControllsB: BehaviorRelay<[[String: Any]]> = BehaviorRelay(value: [])
-    private var viewControlls: [[String: Any]] = []
-
-    var bag = DisposeBag()
-
+    
+    struct TabBarInfoModel {
+        let viewController: UIViewController
+        let title: String
+        let titleSize: Int
+        let selectedImage: UIImage
+        let selectedTitleColor: UIColor
+        let normalImage: UIImage
+        let normalTitleColor: UIColor
+    }
+    
+    private var tabBarInfos: [TabBarInfoModel]? = [] {
+        didSet {
+            if let tabBarInfos = tabBarInfos {
+                
+                let childViewControllers = tabBarInfos.map{ $0.viewController }
+                self.viewControllers = childViewControllers
+                
+                for model in tabBarInfos {
+                    self.setTabBarItem(viewController: model.viewController,
+                                       title: model.title,
+                                       titleSize: model.titleSize,
+                                       selectedImage: model.selectedImage,
+                                       selectedTitleColor: model.selectedTitleColor,
+                                       normalImage: model.normalImage,
+                                       normalTitleColor: model.normalTitleColor)
+                }
+            }
+            else {
+                self.viewControllers = nil
+            }
+            
+        }
+    }
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewControllsB
-//            .throttle(0.1, scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self](viewControllerInfos) in
-                
-                let childViewControllers = viewControllerInfos.map{ $0["childViewController"] } as? [UIViewController]
-                
-                if let childViewControllers = childViewControllers,
-                    !childViewControllers.isEmpty {
-                    
-                    self?.viewControllers = childViewControllers
-                    for (index, viewController) in childViewControllers.enumerated() {
-                    
-                        self?.setTabBarItem(viewController: viewController,
-                                            title: viewControllerInfos[index]["title"] as! String,
-                                            titleSize: viewControllerInfos[index]["titleSize"] as! Int,
-                                            selectedImage: viewControllerInfos[index]["selectedImage"] as! UIImage,
-                                            selectedTitleColor: viewControllerInfos[index]["selectedTitleColor"] as! UIColor,
-                                            normalImage: viewControllerInfos[index]["normalImage"] as! UIImage,
-                                            normalTitleColor: viewControllerInfos[index]["normalTitleColor"] as! UIColor)
-                    }
-                }
-            }).disposed(by: bag)
     }
     
     public func addChildViewController(childViewController: UIViewController,
-                                title: String,
-                                titleSize: Int = 10,
-                                selectedImage: UIImage,
-                                selectedTitleColor: UIColor,
-                                normalImage: UIImage,
-                                normalTitleColor: UIColor) {
-        
-        let newChild = ["childViewController": childViewController,
-                       "title": title,
-                       "titleSize": titleSize,
-                       "selectedImage": selectedImage,
-                       "selectedTitleColor": selectedTitleColor,
-                       "normalImage": normalImage,
-                       "normalTitleColor": normalTitleColor] as [String : Any]
-        
-        viewControlls.append(newChild)
-        viewControllsB.accept(viewControlls)
+                                       title: String,
+                                       titleSize: Int = 10,
+                                       selectedImage: UIImage,
+                                       selectedTitleColor: UIColor,
+                                       normalImage: UIImage,
+                                       normalTitleColor: UIColor) {
+        let model = TabBarInfoModel.init(viewController: childViewController,
+                                         title: title,
+                                         titleSize: titleSize,
+                                         selectedImage: selectedImage,
+                                         selectedTitleColor: selectedTitleColor,
+                                         normalImage: normalImage,
+                                         normalTitleColor: normalTitleColor)
+        tabBarInfos?.append(model)
     }
     
     private func setTabBarItem(viewController: UIViewController,
-                       title: String,
-                       titleSize: Int,
-                       selectedImage: UIImage,
-                       selectedTitleColor: UIColor,
-                       normalImage: UIImage,
-                       normalTitleColor: UIColor) {
+                               title: String,
+                               titleSize: Int,
+                               selectedImage: UIImage,
+                               selectedTitleColor: UIColor,
+                               normalImage: UIImage,
+                               normalTitleColor: UIColor) {
         
-        let tabBarItem = UITabBarItem.init(title: title,
-                                           image: normalImage.withRenderingMode(.alwaysOriginal),
-                                           selectedImage: selectedImage.withRenderingMode(.alwaysOriginal))
+        let tabBarItem = UITabBarItem(title: title,
+                                      image: normalImage.withRenderingMode(.alwaysOriginal),
+                                      selectedImage: selectedImage.withRenderingMode(.alwaysOriginal))
         tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -2)
         viewController.tabBarItem = tabBarItem
         
         UITabBarItem.appearance()
             .setTitleTextAttributes([NSAttributedStringKey.foregroundColor: normalTitleColor,
-                                                          NSAttributedStringKey.font: UIFont.systemFont(ofSize: CGFloat(titleSize))], for: .normal)
+                                     NSAttributedStringKey.font: UIFont.systemFont(ofSize: CGFloat(titleSize))], for: .normal)
         UITabBarItem.appearance()
             .setTitleTextAttributes([NSAttributedStringKey.foregroundColor: selectedTitleColor,
-                                                          NSAttributedStringKey.font: UIFont.systemFont(ofSize: CGFloat(titleSize))], for: .selected)
-       
+                                     NSAttributedStringKey.font: UIFont.systemFont(ofSize: CGFloat(titleSize))], for: .selected)
     }
 }

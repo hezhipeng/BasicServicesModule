@@ -12,6 +12,9 @@ import FHUD
 extension UIViewController {
     
     public func showLoading() {
+        
+        FHUD.hide(onView: self.view, animated: false)
+
         let _ = FHUD.show(.progress(mode: .default, title: nil), onView: self.view, animated: true)
     }
     
