@@ -9,37 +9,22 @@
 import Moya
 import RxSwift
 
-private var loginSuccessCodeVar = 0
-private var reLoginCodeVar = 0
 private var unknownErrorCode = -1
 
 public typealias JsonInfo = [String: Any]
-public typealias ResponseInfo = (code: Int?, data: Any?, message: String?)
 
 public protocol HttpService {
-    
-    func loginSuccessCode() -> Int
-
-    func reLoginCode() -> Int
     
     func decode<T>(response: Data,
                    of: T.Type) throws -> T where T: Codable
     
     func networkServer<Target: TargetType>(api: Target,
-                       parser: @escaping (Response) -> ResponseInfo)
+                                           parser: @escaping (JsonInfo) -> Result<Any>)
         -> Observable<Result<Any>>
 }
 
 public extension HttpService {
     
-    func loginSuccessCode() -> Int {
-        return 200
-    }
-
-    func reLoginCode() -> Int {
-        return 301
-    }
-
     func decode<T>(response: Data,
                    of: T.Type) throws -> T where T: Codable {
         let decoder = JSONDecoder()
@@ -49,25 +34,23 @@ public extension HttpService {
     }
     
     func networkServer<Target: TargetType>(api: Target,
-                                        parser: @escaping (Response) -> ResponseInfo)
+                                           parser: @escaping (JsonInfo) -> Result<Any>)
         -> Observable<Result<Any>> {
-        
+            
             #if DEBUG || ADHOC
             print("""
                 =======================================================
-                                    网络请求
+                网络请求
                 接口: \(api.baseURL.absoluteString+api.path)
                 get接口: \(api.baseURL.absoluteString+api.path)\(api.task.parameters()?.getURLParams() ?? "")
-                param:\(api.task.parameters()?.jsonString() ?? "" )
-                bodyParam:\(api.task.bodyParameters()?.jsonString() ?? "")
+                param: \(api.task.parameters()?.jsonString() ?? "" )
+                bodyParam: \(api.task.bodyParameters()?.jsonString() ?? "")
                 =======================================================
                 """)
             #endif
-
-            loginSuccessCodeVar = self.loginSuccessCode()
-            reLoginCodeVar = self.reLoginCode()
+            
             let provider = MoyaProvider<Target>()
-                                        
+            
             switch api.task {
             case .uploadMultipart, .uploadCompositeMultipart, .uploadFile:
                 return provider.rx.requestWithProgress(api, callbackQueue: DispatchQueue.main)
@@ -78,7 +61,7 @@ public extension HttpService {
                             let nsError = moyaError.error as NSError? {
                             
                             let error = apiError(code: nsError.code)
-                            return Observable.just(ProgressResponse(progress: nil, response: Response(statusCode: error.code, data: Data())))
+                            return Observable.just(ProgressResponse(progress: nil, response: Response(statusCode: error.code ?? unknownErrorCode, data: Data())))
                         }
                         return Observable.just(ProgressResponse(progress: nil, response: Response(statusCode: unknownErrorCode, data: Data())))
                     })
@@ -92,10 +75,10 @@ public extension HttpService {
                             if let _ = progress.progressObject {
                                 if progress.completed {
                                     if let response = progress.response {
-                                        return self.processResponseData(response, parser)
+                                        return self.parserData(response, parser)
                                     }
                                     else {
-                                        return .failure(.URLErrorUnknown(errorCode: unknownErrorCode))
+                                        return .failure(.URLErrorUnknown)
                                     }
                                 }
                                 else {
@@ -111,7 +94,7 @@ public extension HttpService {
                                 }
                             }
                             else {
-                                return .failure(.URLErrorUnknown(errorCode: unknownErrorCode))
+                                return .failure(.URLErrorUnknown)
                             }
                         }
                     })
@@ -123,12 +106,12 @@ public extension HttpService {
                     .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
                     .observeOn(MainScheduler.instance)
                     .catchError({ (error) -> Observable<Response> in
-
+                        
                         if let moyaError = error as? MoyaError,
                             let nsError = moyaError.error as NSError? {
-                        
+                            
                             let error = apiError(code: nsError.code)
-                            return Observable.just(Response(statusCode: error.code, data: Data()))
+                            return Observable.just(Response(statusCode: error.code ?? unknownErrorCode, data: Data()))
                         }
                         
                         return Observable.just(Response(statusCode: unknownErrorCode, data: Data()))
@@ -140,7 +123,7 @@ public extension HttpService {
                             return  .failure(error)
                         }
                         else {
-                            return self.processResponseData(response, parser)
+                            return self.parserData(response, parser)
                         }
                     })
                     .share(replay: 1)
@@ -156,13 +139,13 @@ public extension HttpService {
             response.request == nil,
             response.response == nil {
             let error = apiError(code: (response.statusCode))
-
+            
             #if DEBUG || ADHOC
             print("""
                 -------------------------------------------------------
                 请求异常结果
-                接口:\(response.request?.url?.absoluteString ?? "")
-                返回:\(error.message)
+                接口: \(response.request?.url?.absoluteString ?? "")
+                返回: \(error.message)
                 -------------------------------------------------------
                 """)
             #endif
@@ -171,36 +154,31 @@ public extension HttpService {
         return false
     }
     
-    private func processResponseData(_ response: Response,
-                                     _ parser: @escaping (Response) -> ResponseInfo)
-        ->Result<Any> {
+    private func parserData(_ response: Response,
+                            _ parser: @escaping (JsonInfo) -> Result<Any>) ->Result<Any> {
+        do {
+            let json = try response.mapJSON()
+            #if DEBUG || ADHOC
+            print("""
+                -------------------------------------------------------
+                请求结果
+                接口: \(response.request?.url?.absoluteString ?? "")
+                返回值: \(json)
+                ------------------------------------------------------
+                """)
+            #endif
             
-        let json = try? response.mapJSON()
-        #if DEBUG || ADHOC
-        print("""
-            -------------------------------------------------------
-            请求结果
-            接口:\(response.request?.url?.absoluteString ?? "")
-            返回值:\(json ?? "")
-            ------------------------------------------------------
-            """)
-        #endif
-
-        let responseData = parser(response)
-        guard let code = responseData.code else {
-            return .failure(.URLErrorUnknown(errorCode: unknownErrorCode))
-        }
-        if code == loginSuccessCodeVar {
-            return .success(responseData.data ?? [:], responseData.message)
-        }
-        else if code == reLoginCodeVar {
-            return .failure(.ReLogin(message: responseData.message))
-        }
-        else {
-            return .failure(.ServiceIncorrect(code: code, message: responseData.message))
+            guard let jsonData = json as? JsonInfo else {
+                return .failure(.URLErrorUnknown)
+            }
+            return parser(jsonData)
+            
+        } catch {
+            fatalError("response.mapJSON() exception")
         }
     }
 }
+
 
 public func apiError(code: Int) -> ApiError {
     switch code {
@@ -215,7 +193,7 @@ public func apiError(code: Int) -> ApiError {
     case NSURLErrorCancelled:
         return .URLErrorCancelled(errorCode: NSURLErrorCancelled)
     default:
-        return .URLErrorUnknown(errorCode: unknownErrorCode)
+        return .URLErrorUnknown
     }
 }
 

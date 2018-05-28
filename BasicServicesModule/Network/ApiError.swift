@@ -20,7 +20,7 @@ public enum ApiError: Error {
     /// 取消连接
     case URLErrorCancelled(errorCode: Int)
     /// 不知道的错误
-    case URLErrorUnknown(errorCode: Int)
+    case URLErrorUnknown
     
     /// 服务器返回不正确(不是成功的code)
     case ServiceIncorrect(code: Int, message: String?)
@@ -29,7 +29,7 @@ public enum ApiError: Error {
     /// 解码返回值出错
     case DecodeError
     
-    public var code: Int {
+    public var code: Int? {
         switch self {
         case .URLErrorNotConnectedToInternet(let errorCode):
             return errorCode
@@ -41,14 +41,14 @@ public enum ApiError: Error {
             return errorCode
         case .URLErrorCancelled(let errorCode):
             return errorCode
-        case .URLErrorUnknown(let errorCode):
-            return errorCode
+        case .URLErrorUnknown:
+            return nil
         case .ServiceIncorrect(let code, _ ):
             return code
-        case .ReLogin( _ ):
-            return 0
+        case .ReLogin:
+            return nil
         case .DecodeError:
-            return 0
+            return nil
         }
     }
     

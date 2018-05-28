@@ -35,10 +35,10 @@ public enum Result<Value> {
         }
     }
     
-    public var code: Int {
+    public var errorCode: Int? {
         switch self {
         case .success:
-            return 200
+            return nil
         case .failure(let error):
             return error.code
         }
@@ -57,7 +57,7 @@ public enum Result<Value> {
         switch self {
         case .success:
             return nil
-        case .failure(let error):
+        case let .failure(error):
             return error
         }
     }
