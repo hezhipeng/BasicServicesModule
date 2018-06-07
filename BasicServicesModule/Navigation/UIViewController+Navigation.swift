@@ -15,7 +15,7 @@ extension UIViewController: SelfAware {
     }
     
     // MARK: - Method Swizzling
-
+    
     public class func classInit() {
         swizzleMethod
     }
@@ -40,7 +40,7 @@ extension UIViewController: SelfAware {
     }
     
     // MARK: - Swizzled ViewWillAppear
-
+    
     @objc func swizzled_viewWillAppear(_ animated: Bool) {
         swizzled_viewWillAppear(animated)
         
@@ -74,6 +74,44 @@ extension UIViewController: SelfAware {
     ///
     /// - Parameter rightButtonItem: rightButtonItem
     public func addRightNavigationBarItem(_ rightButtonItem: UIBarButtonItem) {
+        let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
+        
+        if #available(iOS 11.0, *) {
+            space.width = 8;
+        } else {
+            space.width = 0;
+        }
+        self.navigationItem.rightBarButtonItems = [space, rightButtonItem];
+    }
+    
+    /// 根据title添加导航栏左边UIBarButtonItem
+    ///
+    /// - Parameters:
+    ///   - title:
+    ///   - target:
+    ///   - action:
+    public func addLeftNavigationBarItem(title: String?, target: Any?, action: Selector?, tintColor: UIColor = UIColor.black) {
+        let item = UIBarButtonItem.init(title: title, style: .plain, target: target, action: action)
+        item.tintColor = tintColor
+        self.addLeftNavigationBarItem(item)
+    }
+    
+    /// 根据title添加导航栏右边UIBarButtonItem
+    ///
+    /// - Parameters:
+    ///   - title:
+    ///   - target:
+    ///   - action:
+    public func addRightNavigationBarItem(title: String?, target: Any?, action: Selector?, tintColor: UIColor = UIColor.black) {
+        let item = UIBarButtonItem.init(title: title, style: .plain, target: target, action: action)
+        item.tintColor = tintColor
+        self.addRightNavigationBarItem(item)
+    }
+    
+    /// 添加导航栏右边UIBarButtonItem
+    ///
+    /// - Parameter rightButtonItem: rightButtonItem
+    public func addRightNavigationBarItemWithTitle(_ rightButtonItem: UIBarButtonItem) {
         let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
         
         if #available(iOS 11.0, *) {
@@ -156,7 +194,7 @@ extension UIViewController: SelfAware {
             let _ = self.navigationController ,
             let count = self.navigationController?.viewControllers.count,
             count <= 1 {
-                    return true;
+            return true;
         }
         return false
     }
@@ -175,14 +213,14 @@ extension UIViewController: SelfAware {
     }
     
     /// 返回按钮事件，view controller可自己实现该方法
-    @objc public func backButtonClicked() {
+    @objc open func backButtonClicked() {
         if let navigationController = self.navigationController {
             navigationController.popViewController(animated: true)
         }
     }
     
     /// 关闭按钮事件，view controller可自己实现该方法
-    @objc public func closeButtonClicked() {
+    @objc open func closeButtonClicked() {
         self.dismiss(animated: true, completion: nil)
     }
 }

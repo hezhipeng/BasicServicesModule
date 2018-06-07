@@ -30,11 +30,10 @@ class ViewController1: UIViewController {
         btn1.setTitle("更改", for: .normal)
         btn1.addTarget(self, action: #selector(update), for: .touchUpInside)
         self.view .addSubview(btn1)
-        
     }
 
     deinit {
-        printLog("deinit")
+        Cansole.log("deinit")
     }
     
     override func didReceiveMemoryWarning() {

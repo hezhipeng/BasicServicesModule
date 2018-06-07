@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0A12A70A529DB96118AFC769 /* Pods_BasicServicesModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9BBBFD64C50DE060DA0FD9 /* Pods_BasicServicesModule.framework */; };
 		D00C32B82097611300CC5859 /* UINavigationBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00C32B62097611300CC5859 /* UINavigationBarAppearance.swift */; };
-		D00C32B92097611300CC5859 /* UIViewControllerSingleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00C32B72097611300CC5859 /* UIViewControllerSingleAlert.swift */; };
 		D07704B920B7BA7600DFA2EB /* BaseCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07704B720B7BA7600DFA2EB /* BaseCommon.swift */; };
 		D07704BA20B7BA7600DFA2EB /* PropertyListReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07704B820B7BA7600DFA2EB /* PropertyListReadable.swift */; };
 		D07ADF532090310500B35B2B /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07ADF502090310500B35B2B /* ApiError.swift */; };
@@ -21,15 +20,15 @@
 		D07ADF9E209062FE00B35B2B /* SelfAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07ADF9C209062FE00B35B2B /* SelfAware.swift */; };
 		D07ADFA02090637500B35B2B /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07ADF9F2090637500B35B2B /* Resource.swift */; };
 		D07DAD1D20902557000AD05F /* BasicServicesModule.h in Headers */ = {isa = PBXBuildFile; fileRef = D07DAD1B20902557000AD05F /* BasicServicesModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0D6568A20C9201900702B59 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6568920C9201900702B59 /* UIViewControllerExtensions.swift */; };
 		D0D7E17020973AEC00AC9ED5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7E16F20973AEC00AC9ED5 /* TabBarController.swift */; };
-		D0F4771820ADBF8700AAE5B3 /* PrintLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4771720ADBF8700AAE5B3 /* PrintLog.swift */; };
+		D0F4771820ADBF8700AAE5B3 /* Cansole.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4771720ADBF8700AAE5B3 /* Cansole.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3C9BBBFD64C50DE060DA0FD9 /* Pods_BasicServicesModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BasicServicesModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B312708715B112D7F02EACBB /* Pods-BasicServicesModule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasicServicesModule.release.xcconfig"; path = "Pods/Target Support Files/Pods-BasicServicesModule/Pods-BasicServicesModule.release.xcconfig"; sourceTree = "<group>"; };
 		D00C32B62097611300CC5859 /* UINavigationBarAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBarAppearance.swift; sourceTree = "<group>"; };
-		D00C32B72097611300CC5859 /* UIViewControllerSingleAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerSingleAlert.swift; sourceTree = "<group>"; };
 		D07704B720B7BA7600DFA2EB /* BaseCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCommon.swift; sourceTree = "<group>"; };
 		D07704B820B7BA7600DFA2EB /* PropertyListReadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListReadable.swift; sourceTree = "<group>"; };
 		D07ADF502090310500B35B2B /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
@@ -43,8 +42,9 @@
 		D07DAD1820902557000AD05F /* BasicServicesModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BasicServicesModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07DAD1B20902557000AD05F /* BasicServicesModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicServicesModule.h; sourceTree = "<group>"; };
 		D07DAD1C20902557000AD05F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0D6568920C9201900702B59 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		D0D7E16F20973AEC00AC9ED5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		D0F4771720ADBF8700AAE5B3 /* PrintLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintLog.swift; sourceTree = "<group>"; };
+		D0F4771720ADBF8700AAE5B3 /* Cansole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cansole.swift; sourceTree = "<group>"; };
 		FB7220545C702B4153F3ECED /* Pods-BasicServicesModule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasicServicesModule.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BasicServicesModule/Pods-BasicServicesModule.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,11 +108,11 @@
 			children = (
 				D07704B720B7BA7600DFA2EB /* BaseCommon.swift */,
 				D07704B820B7BA7600DFA2EB /* PropertyListReadable.swift */,
-				D0F4771720ADBF8700AAE5B3 /* PrintLog.swift */,
+				D0F4771720ADBF8700AAE5B3 /* Cansole.swift */,
 				D00C32B62097611300CC5859 /* UINavigationBarAppearance.swift */,
-				D00C32B72097611300CC5859 /* UIViewControllerSingleAlert.swift */,
 				D07ADF9F2090637500B35B2B /* Resource.swift */,
 				D07ADF9C209062FE00B35B2B /* SelfAware.swift */,
+				D0D6568920C9201900702B59 /* UIViewControllerExtensions.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -271,15 +271,15 @@
 				D07ADF9E209062FE00B35B2B /* SelfAware.swift in Sources */,
 				D0D7E17020973AEC00AC9ED5 /* TabBarController.swift in Sources */,
 				D07ADF5E2090334500B35B2B /* UIViewController+Indicator.swift in Sources */,
-				D0F4771820ADBF8700AAE5B3 /* PrintLog.swift in Sources */,
+				D0F4771820ADBF8700AAE5B3 /* Cansole.swift in Sources */,
 				D07ADF542090310500B35B2B /* Result.swift in Sources */,
-				D00C32B92097611300CC5859 /* UIViewControllerSingleAlert.swift in Sources */,
 				D07704BA20B7BA7600DFA2EB /* PropertyListReadable.swift in Sources */,
 				D07704B920B7BA7600DFA2EB /* BaseCommon.swift in Sources */,
 				D07ADF532090310500B35B2B /* ApiError.swift in Sources */,
 				D07ADF5F2090334500B35B2B /* UIViewController+Navigation.swift in Sources */,
 				D07ADF552090310500B35B2B /* HttpService.swift in Sources */,
 				D07ADFA02090637500B35B2B /* Resource.swift in Sources */,
+				D0D6568A20C9201900702B59 /* UIViewControllerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

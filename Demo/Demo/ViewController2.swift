@@ -39,7 +39,7 @@ class ViewController2: UITableViewController {
     }
     
     deinit {
-        printLog("deinit")
+        Cansole.log("deinit")
     }
 
 }
