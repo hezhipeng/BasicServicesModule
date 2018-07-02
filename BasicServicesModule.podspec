@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "BasicServicesModule"
-  s.version      = "0.5.6"
+  s.version      = "0.5.7"
   s.summary      = "Basic Services Module"
   s.homepage     = "https://github.com/hezhipeng"
   s.license      = "MIT"

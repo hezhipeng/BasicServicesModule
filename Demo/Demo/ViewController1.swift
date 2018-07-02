@@ -56,7 +56,15 @@ class ViewController1: UIViewController {
     }
 
     @objc func update() {
-        (UIApplication.shared.delegate as? AppDelegate)?.updateTabbar()
+        
+        self.showLoading()
+        let _ = NetworkService.shared.login(mobileNo: "18611627579", password: "123456")
+            .subscribe(onNext: { [weak self] (result) in
+                Cansole.log(result)
+                self?.hideLoading()
+            })
+        
+//        (UIApplication.shared.delegate as? AppDelegate)?.updateTabbar()
     }
 
 }
