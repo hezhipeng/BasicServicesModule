@@ -8,42 +8,10 @@
 
 import Foundation
 
-extension UIViewController: SelfAware {
+extension UIViewController {
     
-    static func awake() {
-        UIViewController.classInit()
-    }
-    
-    // MARK: - Method Swizzling
-    
-    public class func classInit() {
-        swizzleMethod
-    }
-    
-    static let swizzleMethod: Void = {
-        let originalSelector = #selector(viewWillAppear(_:))
-        let swizzledSelector = #selector(swizzled_viewWillAppear(_:))
-        swizzlingForClass(UIViewController.self, originalSelector: originalSelector, swizzledSelector: swizzledSelector)
-    }()
-    
-    static func swizzlingForClass(_ forClass: AnyClass, originalSelector: Selector, swizzledSelector: Selector) {
-        let originalMethod = class_getInstanceMethod(forClass, originalSelector)
-        let swizzledMethod = class_getInstanceMethod(forClass, swizzledSelector)
-        guard (originalMethod != nil && swizzledMethod != nil) else {
-            return
-        }
-        if class_addMethod(forClass, originalSelector, method_getImplementation(swizzledMethod!), method_getTypeEncoding(swizzledMethod!)) {
-            class_replaceMethod(forClass, swizzledSelector, method_getImplementation(originalMethod!), method_getTypeEncoding(originalMethod!))
-        } else {
-            method_exchangeImplementations(originalMethod!, swizzledMethod!)
-        }
-    }
-    
-    // MARK: - Swizzled ViewWillAppear
-    
-    @objc func swizzled_viewWillAppear(_ animated: Bool) {
-        swizzled_viewWillAppear(animated)
-        
+    /// 自动添加导航栏返回
+    @objc open func customNavigation() {
         self.addNavigationBarLeftSideFunctionButton()
         
         if let navigationController = self.navigationController,
@@ -90,9 +58,14 @@ extension UIViewController: SelfAware {
     ///   - title:
     ///   - target:
     ///   - action:
-    public func addLeftNavigationBarItem(title: String?, target: Any?, action: Selector?, tintColor: UIColor = UIColor.black) {
+    public func addLeftNavigationBarItem(title: String?,
+                                         target: Any?,
+                                         action: Selector?,
+                                         attributes: [NSAttributedStringKey : Any] =  [NSAttributedStringKey.foregroundColor: UIColor.black,
+                                                                                       NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)]) {
         let item = UIBarButtonItem.init(title: title, style: .plain, target: target, action: action)
-        item.tintColor = tintColor
+        item.setTitleTextAttributes(attributes, for: .normal)
+        item.setTitleTextAttributes(attributes, for: .highlighted)
         self.addLeftNavigationBarItem(item)
     }
     
@@ -102,9 +75,14 @@ extension UIViewController: SelfAware {
     ///   - title:
     ///   - target:
     ///   - action:
-    public func addRightNavigationBarItem(title: String?, target: Any?, action: Selector?, tintColor: UIColor = UIColor.black) {
+    public func addRightNavigationBarItem(title: String?,
+                                          target: Any?,
+                                          action: Selector?,
+                                          attributes: [NSAttributedStringKey : Any] =  [NSAttributedStringKey.foregroundColor: UIColor.black,
+                                                                                        NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)]) {
         let item = UIBarButtonItem.init(title: title, style: .plain, target: target, action: action)
-        item.tintColor = tintColor
+        item.setTitleTextAttributes(attributes, for: .normal)
+        item.setTitleTextAttributes(attributes, for: .highlighted)
         self.addRightNavigationBarItem(item)
     }
     

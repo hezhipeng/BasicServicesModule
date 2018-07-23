@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SelfAware: class {
+public protocol SelfAware: class {
     static func awake()
 }
 
@@ -20,7 +20,16 @@ class NothingToSeeHere {
         let types = UnsafeMutablePointer<AnyClass>.allocate(capacity: typeCount)
         let autoreleasingTypes = AutoreleasingUnsafeMutablePointer<AnyClass>(types)
         objc_getClassList(autoreleasingTypes, Int32(typeCount))
-        for index in 0 ..< typeCount { (types[index] as? SelfAware.Type)?.awake() }
+        for index in 0 ..< typeCount {
+            if let viewController = types[index] as? SelfAware.Type {
+                let viewControllerName = NSStringFromClass(viewController)
+                    
+                // 区分swift和object-c，包含"."表示swift，因为swift有名字空间
+                if viewControllerName.contains(".") {
+                    viewController.awake()
+                }
+            }
+        }
         types.deallocate()
     }
 }
