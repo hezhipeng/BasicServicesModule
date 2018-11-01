@@ -61,8 +61,8 @@ extension UIViewController {
     public func addLeftNavigationBarItem(title: String?,
                                          target: Any?,
                                          action: Selector?,
-                                         attributes: [NSAttributedStringKey : Any] =  [NSAttributedStringKey.foregroundColor: UIColor.black,
-                                                                                       NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)]) {
+                                         attributes: [NSAttributedString.Key : Any] =  [NSAttributedString.Key.foregroundColor: UIColor.black,
+                                                                                        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]) {
         let item = UIBarButtonItem.init(title: title, style: .plain, target: target, action: action)
         item.setTitleTextAttributes(attributes, for: .normal)
         item.setTitleTextAttributes(attributes, for: .highlighted)
@@ -78,8 +78,8 @@ extension UIViewController {
     public func addRightNavigationBarItem(title: String?,
                                           target: Any?,
                                           action: Selector?,
-                                          attributes: [NSAttributedStringKey : Any] =  [NSAttributedStringKey.foregroundColor: UIColor.black,
-                                                                                        NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)]) {
+                                          attributes: [NSAttributedString.Key : Any] =  [NSAttributedString.Key.foregroundColor: UIColor.black,
+                                                                                         NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]) {
         let item = UIBarButtonItem.init(title: title, style: .plain, target: target, action: action)
         item.setTitleTextAttributes(attributes, for: .normal)
         item.setTitleTextAttributes(attributes, for: .highlighted)
@@ -212,12 +212,12 @@ class BarItemButton: UIButton {
     
     var direction: Direction = .left
     
-    convenience init(buttonType: UIButtonType, direction: Direction) {
+    convenience init(buttonType: UIButton.ButtonType, direction: Direction) {
         self.init(type: buttonType)
         self.direction = direction
     }
     
-    required init(type buttonType: UIButtonType) {
+    required init(type buttonType: UIButton.ButtonType) {
         super.init(frame: .zero)
     }
     

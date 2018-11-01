@@ -80,10 +80,10 @@ public class TabBarController: UITabBarController {
         viewController.tabBarItem = tabBarItem
         
         UITabBarItem.appearance()
-            .setTitleTextAttributes([NSAttributedStringKey.foregroundColor: normalTitleColor,
-                                     NSAttributedStringKey.font: UIFont.systemFont(ofSize: CGFloat(titleSize))], for: .normal)
+            .setTitleTextAttributes([NSAttributedString.Key.foregroundColor: normalTitleColor,
+                                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: CGFloat(titleSize))], for: .normal)
         UITabBarItem.appearance()
-            .setTitleTextAttributes([NSAttributedStringKey.foregroundColor: selectedTitleColor,
-                                     NSAttributedStringKey.font: UIFont.systemFont(ofSize: CGFloat(titleSize))], for: .selected)
+            .setTitleTextAttributes([NSAttributedString.Key.foregroundColor: selectedTitleColor,
+                                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: CGFloat(titleSize))], for: .selected)
     }
 }

@@ -11,6 +11,6 @@ target 'BasicServicesModule' do
   pod "SnapKit"
   pod "CryptoSwift",       '~> 0.8.3'
   pod "SwiftyAttributes"
-  pod "SwifterSwift",       '~> 4.1.1'
+  pod "SwifterSwift"
   pod "AppFolder"
 end

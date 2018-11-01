@@ -41,7 +41,7 @@ class FHUDIndicatorView: UIView {
     }
     
     lazy var activityIndicatorView: UIActivityIndicatorView = {
-        let activity = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        let activity = UIActivityIndicatorView(style: .whiteLarge)
         activity.hidesWhenStopped = true
         return activity
     }()
