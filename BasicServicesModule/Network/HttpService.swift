@@ -174,7 +174,10 @@ public extension HttpService {
             return parser(jsonData)
             
         } catch {
-            fatalError("response.mapJSON() exception")
+            #if DEBUG || ADHOC
+//            fatalError("response.mapJSON() exception")
+            #endif
+            return .failure(.DecodeError)
         }
     }
 }

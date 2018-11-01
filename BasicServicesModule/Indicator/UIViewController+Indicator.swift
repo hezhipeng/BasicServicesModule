@@ -11,18 +11,18 @@ import FHUD
 
 extension UIViewController {
     
-    public func showLoading() {
+    @objc public func showLoading() {
         
         FHUD.hide(onView: self.view, animated: false)
-
+        
         let _ = FHUD.show(.progress(mode: .default, title: nil), onView: self.view, animated: true)
     }
     
-    public func hideLoading() {
+    @objc public func hideLoading() {
         FHUD.hide(onView: self.view, animated: true)
     }
     
-    public func promptMessage(_ message: String?) {
+    @objc public func promptMessage(_ message: String?) {
         
         FHUD.hide(onView: self.view, animated: false)
         
