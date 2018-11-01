@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "BasicServicesModule"
-  s.version      = "0.5.9"
+  s.version      = "0.6.0"
   s.summary      = "Basic Services Module"
   s.homepage     = "https://github.com/hezhipeng"
   s.license      = "MIT"
@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "9.0"
   s.source       = { :git =>  "https://github.com/hezhipeng/BasicServicesModule.git", :tag => s.version }
-  s.swift_version = "4.1"
+  s.swift_version = "4.2"
   s.source_files  = "BasicServicesModule/*.h"
 
   # s.default_subspec = "Core"
