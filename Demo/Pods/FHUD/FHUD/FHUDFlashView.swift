@@ -40,7 +40,6 @@ class FHUDFlashView: FHUDBackgroundView {
     }
     
     override func layoutSubviews() {
-        super.layoutSubviews()
         if let superview = self.superview {
             
             let viewWidth = superview.frame.size.width
@@ -64,6 +63,7 @@ class FHUDFlashView: FHUDBackgroundView {
                 self.imageView.center = center
             }
         }
+        super.layoutSubviews()
     }
     
     // MARK: - get and set

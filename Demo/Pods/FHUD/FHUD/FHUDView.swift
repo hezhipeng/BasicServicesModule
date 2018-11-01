@@ -57,7 +57,6 @@ class FHUDView: FHUDBackgroundView {
     }
     
     override func layoutSubviews() {
-        super.layoutSubviews()
         
         if let superview = self.superview {
             
@@ -69,6 +68,7 @@ class FHUDView: FHUDBackgroundView {
             
             self.center = CGPoint.init(x: x, y: y)
         }
+        super.layoutSubviews()
     }
     
     deinit {

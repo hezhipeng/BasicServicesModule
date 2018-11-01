@@ -36,7 +36,6 @@ class FHUDPromptView: FHUDBackgroundView {
     }
     
     override func layoutSubviews() {
-        super.layoutSubviews()
         if let superview = self.superview {
             
             let viewWidth = superview.frame.size.width
@@ -70,6 +69,7 @@ class FHUDPromptView: FHUDBackgroundView {
             self.titleLabel.bounds = contentBounds
             self.titleLabel.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         }
+        super.layoutSubviews()
     }
     
     // MARK: - get and set
