@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "BasicServicesModule"
-  s.version      = "0.6.0"
+  s.version      = "0.7.0"
   s.summary      = "Basic Services Module"
   s.homepage     = "https://github.com/hezhipeng"
   s.license      = "MIT"
@@ -22,13 +22,13 @@ Pod::Spec.new do |s|
 
   s.subspec "TabBarController" do |ss|
     ss.source_files  = "BasicServicesModule/TabBarController/"
-	ss.dependency "RxSwift"
- 	ss.dependency "RxCocoa"
+	  ss.dependency "RxSwift",       '~> 4.3.1'
+ 	  ss.dependency "RxCocoa",       '~> 4.3.1'
   end
 
   s.subspec "Network" do |ss|
     ss.source_files  = "BasicServicesModule/Network/"
-    ss.dependency "Moya/RxSwift"
+    ss.dependency "Moya/RxSwift",       '~> 11.0.2'
   end
 
   s.subspec "Navigation" do |ss|
@@ -39,15 +39,9 @@ Pod::Spec.new do |s|
 
   s.subspec "Indicator" do |ss|
     ss.source_files = "BasicServicesModule/Indicator/"
-    ss.dependency "FHUD"
+    ss.dependency "FHUD",       '~> 0.5.0'
   end
   
-  s.dependency "RxSwift"
-  s.dependency "RxCocoa"
-  s.dependency "SnapKit"
-  s.dependency "CryptoSwift",       '~> 0.8.3'
-  s.dependency "SwiftyAttributes"
-  s.dependency "SwifterSwift"
-  s.dependency "AppFolder"
+  s.dependency "SwifterSwift",       '~> 4.6.0'
 
 end
