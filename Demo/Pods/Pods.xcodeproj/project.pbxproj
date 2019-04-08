@@ -361,7 +361,7 @@
 		CB25432AD28A31516272B6CE76A0C932 /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BB77EEAC257F05F6CAEA9A49E6600B /* CalendarExtensions.swift */; };
 		CD44EDA64F9E5A85BCBC4DCED3D12EF2 /* SwitchIfEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7D56B809CF7090EC935CC4278BB5F9 /* SwitchIfEmpty.swift */; };
 		CEE62841901F7514BF8A3309B2F929E2 /* RxCollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4910DB4A0843158150DA1784EDDD2A68 /* RxCollectionViewDelegateProxy.swift */; };
-		D0F9B697225B48730036828C /* UIView+Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F9B695225B483D0036828C /* UIView+Indicator.swift */; };
+		D0F9B699225B5AEB0036828C /* UIView+Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F9B698225B5AEB0036828C /* UIView+Indicator.swift */; };
 		D0FC79B8F82E3705D8FD365D89DF8BCD /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44A5F818887D6A2F2BA17EAC9BE4DD8 /* Result.swift */; };
 		D16AC0766962A423998E40B55A83100D /* Platform.Darwin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1178EF488AB37B078D9367835FF81C /* Platform.Darwin.swift */; };
 		D1B1F8BD4DCB5EFAA616C8E4228D7065 /* SkipUntil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B503824AFD674A029F456F1BCBFB37 /* SkipUntil.swift */; };
@@ -1007,7 +1007,7 @@
 		CE557176E637AE0116E70D9B0B191AE5 /* CLLocationExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLLocationExtensions.swift; path = Sources/Extensions/CoreLocation/CLLocationExtensions.swift; sourceTree = "<group>"; };
 		CF7ABB8924A75385219F6A51273135FE /* FHUDView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FHUDView.swift; path = FHUD/FHUDView.swift; sourceTree = "<group>"; };
 		D0DF9315A49ED048D2CD4A19BABBFBE0 /* ScheduledItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScheduledItem.swift; path = RxSwift/Schedulers/Internal/ScheduledItem.swift; sourceTree = "<group>"; };
-		D0F9B695225B483D0036828C /* UIView+Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Indicator.swift"; sourceTree = "<group>"; };
+		D0F9B698225B5AEB0036828C /* UIView+Indicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Indicator.swift"; path = "BasicServicesModule/Indicator/UIView+Indicator.swift"; sourceTree = "<group>"; };
 		D18EC5481339050E350CAC5D79F95559 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UITextFieldExtensions.swift; path = Sources/Extensions/UIKit/UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		D20216A667D0305B6D2D8D885108AA4A /* RxScrollViewDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxScrollViewDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxScrollViewDelegateProxy.swift; sourceTree = "<group>"; };
 		D22E1B74722F486E92790BC1D8F7C8F4 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
@@ -1800,8 +1800,8 @@
 		E8F2A8317565CBF809C940EF64240250 /* Indicator */ = {
 			isa = PBXGroup;
 			children = (
+				D0F9B698225B5AEB0036828C /* UIView+Indicator.swift */,
 				E8C4C2BAB7244825FB966F268E4E720A /* UIViewController+Indicator.swift */,
-				D0F9B695225B483D0036828C /* UIView+Indicator.swift */,
 			);
 			name = Indicator;
 			sourceTree = "<group>";
@@ -2804,7 +2804,7 @@
 			files = (
 				3D316BE10DD230A5B25B472B75418751 /* ApiError.swift in Sources */,
 				583E772B3F83FFD99C511A87E997DCD2 /* BaseCommon.swift in Sources */,
-				D0F9B697225B48730036828C /* UIView+Indicator.swift in Sources */,
+				D0F9B699225B5AEB0036828C /* UIView+Indicator.swift in Sources */,
 				5F66DA90B23F4F30118C8934FA775838 /* BasicServicesModule-dummy.m in Sources */,
 				746F36D2FA97996779CAC9D36B6369DE /* Cansole.swift in Sources */,
 				6141E166ACB73D43995BDF2FFFB0DF99 /* HttpService.swift in Sources */,
