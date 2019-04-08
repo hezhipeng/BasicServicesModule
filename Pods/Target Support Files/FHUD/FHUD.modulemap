@@ -1,6 +1,0 @@
-framework module FHUD {
-  umbrella header "FHUD-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,64 +1,28 @@
 PODS:
   - Alamofire (4.7.3)
-  - AppFolder (0.2.0)
-  - BasicServicesModule (0.5.9):
-    - AppFolder
-    - BasicServicesModule/Core (= 0.5.9)
-    - BasicServicesModule/Indicator (= 0.5.9)
-    - BasicServicesModule/Navigation (= 0.5.9)
-    - BasicServicesModule/Network (= 0.5.9)
-    - BasicServicesModule/TabBarController (= 0.5.9)
-    - CryptoSwift (~> 0.8.3)
-    - RxCocoa
-    - RxSwift
-    - SnapKit
+  - BasicServicesModule (1.0.0):
+    - BasicServicesModule/Core (= 1.0.0)
+    - BasicServicesModule/Indicator (= 1.0.0)
+    - BasicServicesModule/Navigation (= 1.0.0)
+    - BasicServicesModule/Network (= 1.0.0)
+    - BasicServicesModule/TabBarController (= 1.0.0)
     - SwifterSwift
-    - SwiftyAttributes
-  - BasicServicesModule/Core (0.5.9):
-    - AppFolder
-    - CryptoSwift (~> 0.8.3)
-    - RxCocoa
-    - RxSwift
-    - SnapKit
+  - BasicServicesModule/Core (1.0.0):
     - SwifterSwift
-    - SwiftyAttributes
-  - BasicServicesModule/Indicator (0.5.9):
-    - AppFolder
-    - CryptoSwift (~> 0.8.3)
+  - BasicServicesModule/Indicator (1.0.0):
     - FHUD
-    - RxCocoa
-    - RxSwift
-    - SnapKit
     - SwifterSwift
-    - SwiftyAttributes
-  - BasicServicesModule/Navigation (0.5.9):
-    - AppFolder
+  - BasicServicesModule/Navigation (1.0.0):
     - BasicServicesModule/Core
-    - CryptoSwift (~> 0.8.3)
-    - RxCocoa
-    - RxSwift
-    - SnapKit
     - SwifterSwift
-    - SwiftyAttributes
-  - BasicServicesModule/Network (0.5.9):
-    - AppFolder
-    - CryptoSwift (~> 0.8.3)
+  - BasicServicesModule/Network (1.0.0):
     - Moya/RxSwift
     - RxCocoa
     - RxSwift
-    - SnapKit
     - SwifterSwift
-    - SwiftyAttributes
-  - BasicServicesModule/TabBarController (0.5.9):
-    - AppFolder
-    - CryptoSwift (~> 0.8.3)
-    - RxCocoa
-    - RxSwift
-    - SnapKit
+  - BasicServicesModule/TabBarController (1.0.0):
     - SwifterSwift
-    - SwiftyAttributes
-  - CryptoSwift (0.8.3)
-  - FHUD (0.3)
+  - FHUD (0.5)
   - Moya/Core (11.0.2):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
@@ -69,7 +33,6 @@ PODS:
   - RxCocoa (4.3.1):
     - RxSwift (~> 4.0)
   - RxSwift (4.3.1)
-  - SnapKit (4.2.0)
   - SwifterSwift (4.6.0):
     - SwifterSwift/AppKit (= 4.6.0)
     - SwifterSwift/CoreGraphics (= 4.6.0)
@@ -87,24 +50,19 @@ PODS:
   - SwifterSwift/SpriteKit (4.6.0)
   - SwifterSwift/SwiftStdlib (4.6.0)
   - SwifterSwift/UIKit (4.6.0)
-  - SwiftyAttributes (5.0.0)
 
 DEPENDENCIES:
   - BasicServicesModule (from `../`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
-    - AppFolder
-    - CryptoSwift
     - FHUD
     - Moya
     - Result
     - RxCocoa
     - RxSwift
-    - SnapKit
     - SwifterSwift
-    - SwiftyAttributes
 
 EXTERNAL SOURCES:
   BasicServicesModule:
@@ -112,18 +70,14 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  AppFolder: d10ba19488bd441d60ffcf96eb2ab639a4825231
-  BasicServicesModule: ebc554571711d35e8c8507af0a3fad2aa9f62131
-  CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
-  FHUD: aac4a50d23cabdfb2b251037d354ee7d95795b03
+  BasicServicesModule: c6b0f8dd3bc0fc7f257eb7170976ecc7f755c528
+  FHUD: 0ebb04ba65cc5d9ce7257d265ca4299894ca3f8d
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
-  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwifterSwift: 812ffec6f301922f5430e75be3f2939ea3a80024
-  SwiftyAttributes: a6e7bbac1e9a9f5c0b42e4055563ca091dda03ad
 
 PODFILE CHECKSUM: b5f37db626c5c4715349e13a7bf9657d7fa31840
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

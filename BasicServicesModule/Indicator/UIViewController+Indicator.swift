@@ -12,10 +12,10 @@ import FHUD
 extension UIViewController {
     
     @objc public func showLoading() {
-        
-        FHUD.hide(onView: self.view, animated: false)
-        
-        let _ = FHUD.show(.progress(mode: .default, title: nil), onView: self.view, animated: true)
+        DispatchQueue.main.async {
+            FHUD.hide(onView: self.view, animated: false)
+            let _ = FHUD.show(.progress(mode: .default, title: nil), onView: self.view, animated: true)
+        }
     }
     
     @objc public func hideLoading() {

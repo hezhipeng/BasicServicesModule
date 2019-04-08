@@ -71,14 +71,14 @@ class FHUDZoomInOutCycleView: UIView {
         strokeStart.fromValue = 0
         strokeStart.toValue = 1
         strokeStart.duration = 2
-        strokeStart.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        strokeStart.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         
         // 显示
         let strokeEnd = CABasicAnimation.init(keyPath: "strokeEnd")
         strokeEnd.fromValue = 0
         strokeEnd.toValue = 1
         strokeEnd.duration = 1
-        strokeEnd.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        strokeEnd.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         
         let groud = CAAnimationGroup()
         groud.repeatCount = 0
@@ -96,7 +96,7 @@ class FHUDZoomInOutCycleView: UIView {
         loading.strokeColor = self.tintColor?.cgColor
         loading.fillColor = UIColor.clear.cgColor
         loading.strokeStart = 1
-        loading.lineCap = kCALineCapRound
+        loading.lineCap = CAShapeLayerLineCap.round
         return loading
     }()
 }

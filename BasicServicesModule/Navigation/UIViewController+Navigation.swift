@@ -15,7 +15,7 @@ extension UIViewController {
         self.addNavigationBarLeftSideFunctionButton()
         
         if let navigationController = self.navigationController,
-            navigationController.viewControllers.count == 1 {
+            navigationController.viewControllers.count >= 1 {
             self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
             self.navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
         }

@@ -26,8 +26,8 @@ class ViewController2: UITableViewController {
         DispatchQueue.main.async {
             
             
-            self.navigationController?.navigationBar.customBar(backgroundColor: .blue, titleTextAttributes: [NSAttributedStringKey.foregroundColor: UIColor.red,
-            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
+            self.navigationController?.navigationBar.customBar(backgroundColor: .blue, titleTextAttributes: [NSAttributedString.Key.foregroundColor: UIColor.red,
+                                                                                                             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)])
         }
     }
 

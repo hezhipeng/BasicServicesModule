@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         
         self.title = "frank"
         self.promptMessage("快捷")
+        
 //        self.alert("alert")
 //        UINavigationBar.customBar()
         

@@ -112,7 +112,7 @@ class FHUDView: FHUDBackgroundView {
     private func startTimer(enabled: Bool) {
         if enabled {
             timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateTitle), userInfo: nil, repeats: true)
-            RunLoop.current.add(timer!, forMode: .defaultRunLoopMode)
+            RunLoop.current.add(timer!, forMode: RunLoop.Mode.default)
             self.updateTitle()
         }
         else {
@@ -126,7 +126,7 @@ class FHUDView: FHUDBackgroundView {
         if let title = title {
             i -= 1
             let attri = NSMutableAttributedString(string: title)
-            attri.addAttributes([NSAttributedStringKey.foregroundColor: UIColor.clear],
+            attri.addAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear],
                                 range: NSRange(location: attri.length - i, length: i))
             self.titleLabel.attributedText = attri
             if i <= 0 {
@@ -223,32 +223,32 @@ class FHUDView: FHUDBackgroundView {
         if let _ = title {
             loadStyleView.translatesAutoresizingMaskIntoConstraints = false
             let lCenterX: NSLayoutConstraint = NSLayoutConstraint(item: loadStyleView,
-                                                                  attribute: NSLayoutAttribute.centerX,
-                                                                  relatedBy:NSLayoutRelation.equal,
+                                                                  attribute: NSLayoutConstraint.Attribute.centerX,
+                                                                  relatedBy:NSLayoutConstraint.Relation.equal,
                                                                   toItem:self,
-                                                                  attribute:NSLayoutAttribute.centerX,
+                                                                  attribute:NSLayoutConstraint.Attribute.centerX,
                                                                   multiplier:1.0,
                                                                   constant: 0)
             
             let lCenterY: NSLayoutConstraint = NSLayoutConstraint(item: loadStyleView,
-                                                                  attribute: NSLayoutAttribute.centerY,
-                                                                  relatedBy:NSLayoutRelation.equal,
+                                                                  attribute: NSLayoutConstraint.Attribute.centerY,
+                                                                  relatedBy:NSLayoutConstraint.Relation.equal,
                                                                   toItem:self,
-                                                                  attribute:NSLayoutAttribute.centerY, multiplier:1.0, constant: -15)
+                                                                  attribute:NSLayoutConstraint.Attribute.centerY, multiplier:1.0, constant: -15)
           
             let lwidth: NSLayoutConstraint = NSLayoutConstraint(item: loadStyleView,
-                                                               attribute: NSLayoutAttribute.width,
-                                                               relatedBy:NSLayoutRelation.equal,
+                                                                attribute: NSLayoutConstraint.Attribute.width,
+                                                                relatedBy:NSLayoutConstraint.Relation.equal,
                                                                toItem:nil,
-                                                               attribute:NSLayoutAttribute.notAnAttribute,
+                                                               attribute:NSLayoutConstraint.Attribute.notAnAttribute,
                                                                multiplier:1.0,
                                                                constant: FHUDView.styleSize.width)
             
             let lheight: NSLayoutConstraint = NSLayoutConstraint(item: loadStyleView,
-                                                                attribute: NSLayoutAttribute.height,
-                                                                relatedBy:NSLayoutRelation.equal,
+                                                                 attribute: NSLayoutConstraint.Attribute.height,
+                                                                 relatedBy:NSLayoutConstraint.Relation.equal,
                                                                 toItem:nil,
-                                                                attribute:NSLayoutAttribute.notAnAttribute,
+                                                                attribute:NSLayoutConstraint.Attribute.notAnAttribute,
                                                                 multiplier:1.0,
                                                                 constant: FHUDView.styleSize.height)
             
@@ -256,34 +256,34 @@ class FHUDView: FHUDBackgroundView {
             
             titleLabel.translatesAutoresizingMaskIntoConstraints = false
             let tCenterX: NSLayoutConstraint = NSLayoutConstraint(item: titleLabel,
-                                                                  attribute: NSLayoutAttribute.centerX,
-                                                                  relatedBy:NSLayoutRelation.equal,
+                                                                  attribute: NSLayoutConstraint.Attribute.centerX,
+                                                                  relatedBy:NSLayoutConstraint.Relation.equal,
                                                                   toItem:self,
-                                                                  attribute:NSLayoutAttribute.centerX,
+                                                                  attribute:NSLayoutConstraint.Attribute.centerX,
                                                                   multiplier:1.0,
                                                                   constant: 0)
             
             let tTop: NSLayoutConstraint = NSLayoutConstraint(item: titleLabel,
-                                                              attribute: NSLayoutAttribute.top,
-                                                              relatedBy:NSLayoutRelation.equal,
+                                                              attribute: NSLayoutConstraint.Attribute.top,
+                                                              relatedBy:NSLayoutConstraint.Relation.equal,
                                                               toItem:loadStyleView,
-                                                              attribute:NSLayoutAttribute.bottom,
+                                                              attribute:NSLayoutConstraint.Attribute.bottom,
                                                               multiplier:1.0,
                                                               constant: 10)
             
             let tLeft: NSLayoutConstraint = NSLayoutConstraint(item: titleLabel,
-                                                               attribute: NSLayoutAttribute.left,
-                                                               relatedBy:NSLayoutRelation.equal,
+                                                               attribute: NSLayoutConstraint.Attribute.left,
+                                                               relatedBy:NSLayoutConstraint.Relation.equal,
                                                                toItem:self,
-                                                               attribute:NSLayoutAttribute.left,
+                                                               attribute:NSLayoutConstraint.Attribute.left,
                                                                multiplier:1.0,
                                                                constant: 5)
             
             let tRight: NSLayoutConstraint = NSLayoutConstraint(item: titleLabel,
-                                                                attribute: NSLayoutAttribute.right,
-                                                                relatedBy:NSLayoutRelation.equal,
+                                                                attribute: NSLayoutConstraint.Attribute.right,
+                                                                relatedBy:NSLayoutConstraint.Relation.equal,
                                                                 toItem:self,
-                                                                attribute:NSLayoutAttribute.right,
+                                                                attribute:NSLayoutConstraint.Attribute.right,
                                                                 multiplier:1.0,
                                                                 constant: -5)
             self.addConstraints([tCenterX, tTop, tLeft, tRight])
@@ -291,34 +291,34 @@ class FHUDView: FHUDBackgroundView {
         else {
             loadStyleView.translatesAutoresizingMaskIntoConstraints = false
             let centerX: NSLayoutConstraint = NSLayoutConstraint(item: loadStyleView,
-                                                                 attribute: NSLayoutAttribute.centerX,
-                                                                 relatedBy:NSLayoutRelation.equal,
+                                                                 attribute: NSLayoutConstraint.Attribute.centerX,
+                                                                 relatedBy:NSLayoutConstraint.Relation.equal,
                                                                  toItem:self,
-                                                                 attribute:NSLayoutAttribute.centerX,
+                                                                 attribute:NSLayoutConstraint.Attribute.centerX,
                                                                  multiplier:1.0,
                                                                  constant: 0)
             
             let centerY: NSLayoutConstraint = NSLayoutConstraint(item: loadStyleView,
-                                                                 attribute: NSLayoutAttribute.centerY,
-                                                                 relatedBy:NSLayoutRelation.equal,
+                                                                 attribute: NSLayoutConstraint.Attribute.centerY,
+                                                                 relatedBy:NSLayoutConstraint.Relation.equal,
                                                                  toItem:self,
-                                                                 attribute:NSLayoutAttribute.centerY,
+                                                                 attribute:NSLayoutConstraint.Attribute.centerY,
                                                                  multiplier:1.0,
                                                                  constant: 0)
             
             let width: NSLayoutConstraint = NSLayoutConstraint(item: loadStyleView,
-                                                               attribute: NSLayoutAttribute.width,
-                                                               relatedBy:NSLayoutRelation.equal,
+                                                               attribute: NSLayoutConstraint.Attribute.width,
+                                                               relatedBy:NSLayoutConstraint.Relation.equal,
                                                                toItem:nil,
-                                                               attribute:NSLayoutAttribute.notAnAttribute,
+                                                               attribute:NSLayoutConstraint.Attribute.notAnAttribute,
                                                                multiplier:1.0,
                                                                constant: FHUDView.styleSize.width)
             
             let height: NSLayoutConstraint = NSLayoutConstraint(item: loadStyleView,
-                                                                attribute: NSLayoutAttribute.height,
-                                                                relatedBy:NSLayoutRelation.equal,
+                                                                attribute: NSLayoutConstraint.Attribute.height,
+                                                                relatedBy:NSLayoutConstraint.Relation.equal,
                                                                 toItem:nil,
-                                                                attribute:NSLayoutAttribute.notAnAttribute,
+                                                                attribute:NSLayoutConstraint.Attribute.notAnAttribute,
                                                                 multiplier:1.0,
                                                                 constant: FHUDView.styleSize.height)
             

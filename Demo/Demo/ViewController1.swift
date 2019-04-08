@@ -15,8 +15,8 @@ class ViewController1: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.promptMessage("快捷")
-        
+        self.view.showLoading()
+
 //        DispatchQueue.main.async {
 //            self.navigationController?.navigationBar.shadowImage = UIImage()
 //            self.navigationController?.navigationBar.tintColor = .yellow
@@ -50,8 +50,8 @@ class ViewController1: UIViewController {
             
             self.alert("alert")
 
-        self.navigationController?.navigationBar.customBar(backgroundColor: .yellow, titleTextAttributes: [NSAttributedStringKey.foregroundColor: UIColor.red,
-                                                                                NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
+            self.navigationController?.navigationBar.customBar(backgroundColor: .yellow, titleTextAttributes: [NSAttributedString.Key.foregroundColor: UIColor.red,
+                                                                                                               NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)])
         }
     }
 

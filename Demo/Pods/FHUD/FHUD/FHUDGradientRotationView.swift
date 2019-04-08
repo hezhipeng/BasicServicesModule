@@ -74,7 +74,7 @@ class FHUDGradientRotationView: UIView {
         rotationAnimation.fromValue = 0
         rotationAnimation.toValue = 2.0 * Double.pi
         rotationAnimation.duration = 1
-        rotationAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        rotationAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         rotationAnimation.repeatCount = HUGE
         self.layer.add(rotationAnimation, forKey: "rotationAnimation")
     }
@@ -110,7 +110,7 @@ class FHUDGradientRotationView: UIView {
         layer.lineWidth = 3;
         layer.strokeStart = 0;
         layer.strokeEnd = 1;
-        layer.lineCap = kCALineCapRound;
+        layer.lineCap = CAShapeLayerLineCap.round;
         layer.lineDashPhase = 0.8;
         return layer
     }()

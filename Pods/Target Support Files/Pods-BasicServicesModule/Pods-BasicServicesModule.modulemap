@@ -1,6 +1,0 @@
-framework module Pods_BasicServicesModule {
-  umbrella header "Pods-BasicServicesModule-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -15,11 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        UINavigationBar.globalCustomBar(backgroundColor: .blue, titleTextAttributes: [NSAttributedStringKey.foregroundColor: UIColor.red,
-                                                                                NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
+        UINavigationBar.globalCustomBar(backgroundColor: .blue, titleTextAttributes: [NSAttributedString.Key.foregroundColor: UIColor.red,
+                                                                                      NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)])
 //        let tabbar = TabBarController()
 //        
 //        let viewController1 = ViewController1()

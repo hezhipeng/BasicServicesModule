@@ -214,7 +214,7 @@ public class FHUD: UIView {
             opaqueAnimate.fromValue = 1
             opaqueAnimate.toValue = 0.1
             opaqueAnimate.autoreverses = false
-            opaqueAnimate.fillMode = kCAFillModeForwards
+            opaqueAnimate.fillMode = CAMediaTimingFillMode.forwards
             opaqueAnimate.repeatCount = 0
             opaqueAnimate.duration = 0.2
             opaqueAnimate.isRemovedOnCompletion = false
@@ -225,7 +225,7 @@ public class FHUD: UIView {
             scaleAnimation.fromValue = 1
             scaleAnimation.toValue = 0.9
             scaleAnimation.autoreverses = false
-            scaleAnimation.fillMode = kCAFillModeForwards
+            scaleAnimation.fillMode = CAMediaTimingFillMode.forwards
             scaleAnimation.repeatCount = 0
             scaleAnimation.duration = 0.2
             scaleAnimation.isRemovedOnCompletion = false
