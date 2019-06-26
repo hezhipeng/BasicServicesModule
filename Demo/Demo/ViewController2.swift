@@ -13,7 +13,7 @@ class ViewController2: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        customNavigation()
     }
 
     override func didReceiveMemoryWarning() {

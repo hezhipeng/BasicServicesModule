@@ -16,7 +16,8 @@ class ViewController1: UIViewController {
         super.viewDidLoad()
         
         self.view.showLoading()
-
+        backIconColor = UIColor.red
+        customNavigation()
 //        DispatchQueue.main.async {
 //            self.navigationController?.navigationBar.shadowImage = UIImage()
 //            self.navigationController?.navigationBar.tintColor = .yellow

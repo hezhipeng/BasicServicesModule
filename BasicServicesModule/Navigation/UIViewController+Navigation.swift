@@ -7,8 +7,21 @@
 //
 
 import Foundation
+import UIKit
 
 extension UIViewController {
+    
+    private struct AssociatedKeys {
+        static var colorKey = "URLSession.ServerTrustPolicyManager"
+    }
+    public var backIconColor: UIColor {
+        get {
+            return (objc_getAssociatedObject(self, &AssociatedKeys.colorKey) as? UIColor) ?? UIColor.black
+        }
+        set (color) {
+            objc_setAssociatedObject(self, &AssociatedKeys.colorKey, color, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
     
     /// 自动添加导航栏返回
     @objc open func customNavigation() {
@@ -141,14 +154,14 @@ extension UIViewController {
     
     /// 添加关闭button
     public func addCloseButton() {
-        let item = self.navigationBarItemWithImage(Resource.imageName("close")!, target: self, action: #selector(UIViewController.closeButtonClicked))
+        let item = self.navigationBarItemWithImage(Resource.imageName("close")!.filled(withColor: backIconColor), target: self, action: #selector(UIViewController.closeButtonClicked))
         self.addLeftNavigationBarItem(item)
     }
     
     /// 添加返回button
     public func addBackButton() {
         
-        let item = self.navigationBarItemWithImage(Resource.imageName("back")!, target: self, action: #selector(UIViewController.backButtonClicked))
+        let item = self.navigationBarItemWithImage(Resource.imageName("back")!.filled(withColor: backIconColor), target: self, action: #selector(UIViewController.backButtonClicked))
         self.addLeftNavigationBarItem(item)
     }
     
