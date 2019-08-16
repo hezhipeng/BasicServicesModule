@@ -11,7 +11,7 @@ import UIKit
 
 extension UIViewController {
     
-    func removeRemind() {
+    public func removeRemind() {
         let sub = view.subviews.first { (sub) -> Bool in
             return sub.tag == 9001
         }
@@ -20,7 +20,7 @@ extension UIViewController {
         }
     }
     
-    func addRemind(_ image: UIImage, _ text: String, _ offsetY: CGFloat = 0) {
+    public func addRemind(_ image: UIImage, _ text: String, _ offsetY: CGFloat = 0) {
         removeRemind()
         
         let container = UIView()

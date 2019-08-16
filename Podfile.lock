@@ -37,7 +37,7 @@ DEPENDENCIES:
   - SwifterSwift (~> 4.6.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - FHUD
     - Moya
@@ -55,6 +55,6 @@ SPEC CHECKSUMS:
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   SwifterSwift: 812ffec6f301922f5430e75be3f2939ea3a80024
 
-PODFILE CHECKSUM: e7120e37a08e17e6fac6e853b28d6b5d94fd5f2c
+PODFILE CHECKSUM: ef924f64a62055223f4fa72ba3a78d697f33ce28
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.6.1

@@ -10,7 +10,7 @@ import UIKit
 
 extension NSMutableAttributedString {
     
-    func stringHeight(width: Int, font: UIFont, lineSpacing: Int) -> Int {
+    public func stringHeight(width: Int, font: UIFont, lineSpacing: Int) -> Int {
 
         let contentSize = self.boundingRect(with: CGSize.init(width: CGFloat(width), height: CGFloat(MAXFLOAT)), options: NSStringDrawingOptions.usesLineFragmentOrigin, context: nil)
 //        print(font.lineHeight, font.pointSize)
