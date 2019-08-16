@@ -1,6 +1,6 @@
 {
   "name": "BasicServicesModule",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "summary": "Basic Services Module",
   "homepage": "https://github.com/hezhipeng",
   "license": "MIT",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/hezhipeng/BasicServicesModule.git",
-    "tag": "1.1.0"
+    "tag": "1.1.2"
   },
   "swift_version": "5",
   "source_files": "BasicServicesModule/*.h",
@@ -25,10 +25,11 @@
   "subspecs": [
     {
       "name": "Core",
-      "source_files": [
-        "BasicServicesModule/Core",
-        "BasicServicesModule/Extension"
-      ]
+      "source_files": "BasicServicesModule/Core"
+    },
+    {
+      "name": "Extension",
+      "source_files": "BasicServicesModule/Extension"
     },
     {
       "name": "TabBarController",

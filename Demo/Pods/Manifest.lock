@@ -1,26 +1,29 @@
 PODS:
   - Alamofire (4.8.2)
-  - BasicServicesModule (1.1.0):
-    - BasicServicesModule/Core (= 1.1.0)
-    - BasicServicesModule/Indicator (= 1.1.0)
-    - BasicServicesModule/Navigation (= 1.1.0)
-    - BasicServicesModule/Network (= 1.1.0)
-    - BasicServicesModule/TabBarController (= 1.1.0)
+  - BasicServicesModule (1.1.2):
+    - BasicServicesModule/Core (= 1.1.2)
+    - BasicServicesModule/Extension (= 1.1.2)
+    - BasicServicesModule/Indicator (= 1.1.2)
+    - BasicServicesModule/Navigation (= 1.1.2)
+    - BasicServicesModule/Network (= 1.1.2)
+    - BasicServicesModule/TabBarController (= 1.1.2)
     - SwifterSwift
-  - BasicServicesModule/Core (1.1.0):
+  - BasicServicesModule/Core (1.1.2):
     - SwifterSwift
-  - BasicServicesModule/Indicator (1.1.0):
+  - BasicServicesModule/Extension (1.1.2):
+    - SwifterSwift
+  - BasicServicesModule/Indicator (1.1.2):
     - FHUD
     - SwifterSwift
-  - BasicServicesModule/Navigation (1.1.0):
+  - BasicServicesModule/Navigation (1.1.2):
     - BasicServicesModule/Core
     - SwifterSwift
-  - BasicServicesModule/Network (1.1.0):
+  - BasicServicesModule/Network (1.1.2):
     - Moya/RxSwift
     - RxCocoa
     - RxSwift
     - SwifterSwift
-  - BasicServicesModule/TabBarController (1.1.0):
+  - BasicServicesModule/TabBarController (1.1.2):
     - SwifterSwift
   - FHUD (0.5)
   - Moya/Core (13.0.1):
@@ -72,7 +75,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  BasicServicesModule: f9a23664d22e6bff9ca89cc600ccfcdfd11d0e64
+  BasicServicesModule: 427b22ad89dd9946100be03ce3ffe119272a75a0
   FHUD: 0ebb04ba65cc5d9ce7257d265ca4299894ca3f8d
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
