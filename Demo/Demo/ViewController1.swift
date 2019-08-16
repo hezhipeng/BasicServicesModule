@@ -34,7 +34,7 @@ class ViewController1: UIViewController {
     }
 
     deinit {
-        Cansole.log("deinit")
+        printX("deinit")
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,7 +61,7 @@ class ViewController1: UIViewController {
         self.showLoading()
         let _ = NetworkService.shared.login(mobileNo: "18611627579", password: "123456")
             .subscribe(onNext: { [weak self] (result) in
-                Cansole.log(result)
+                printX(result)
                 self?.hideLoading()
             })
         

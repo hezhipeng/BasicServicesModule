@@ -27,11 +27,8 @@ extension UIViewController {
     @objc open func customNavigation() {
         self.addNavigationBarLeftSideFunctionButton()
         
-        if let navigationController = self.navigationController,
-            navigationController.viewControllers.count >= 1 {
-            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-            self.navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
-        }
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     // MARK: - Public Method
@@ -245,6 +242,19 @@ class BarItemButton: UIButton {
             self.imageView?.center = CGPoint.init(x: self.imageView!.image!.size.width/2, y: self.center.y)
         } else {
             self.imageView?.center = CGPoint.init(x: self.frame.size.width -  self.imageView!.image!.size.width/2, y: self.center.y)
+        }
+    }
+}
+
+extension UIViewController: UIGestureRecognizerDelegate {
+    
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if let navigationController = self.navigationController,
+            navigationController.viewControllers.count == 1 {
+            return false
+        }
+        else {
+            return true
         }
     }
 }

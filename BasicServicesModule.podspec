@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "BasicServicesModule"
-  s.version      = "1.0.2"
+  s.version      = "1.1.0"
   s.summary      = "Basic Services Module"
   s.homepage     = "https://github.com/hezhipeng"
   s.license      = "MIT"
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   # s.default_subspec = "Core"
 
   s.subspec "Core" do |ss|
-    ss.source_files  = "BasicServicesModule/Core"
+    ss.source_files  = "BasicServicesModule/{Core,Extension}"
   end
 
   s.subspec "TabBarController" do |ss|

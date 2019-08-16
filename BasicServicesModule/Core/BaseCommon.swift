@@ -7,21 +7,15 @@
 
 import Foundation
 
-public func visibleViewController(_ rootViewController: UIViewController) -> UIViewController {
-    if let viewController = rootViewController.presentedViewController {
-        return visibleViewController(viewController)
+public func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+    if let nav = base as? UINavigationController {
+        return topViewController(base: nav.visibleViewController)
     }
-    else {
-        if rootViewController.isKind(of: UINavigationController.self) {
-            if let viewController =  (rootViewController as? UINavigationController)?.visibleViewController {
-                return viewController
-            }
-            else {
-                return rootViewController
-            }
-        }
-        else {
-            return rootViewController
-        }
+    if let tab = base as? UITabBarController {
+        return topViewController(base: tab.selectedViewController)
     }
+    if let presented = base?.presentedViewController {
+        return topViewController(base: presented)
+    }
+    return base
 }
