@@ -112,6 +112,15 @@ extension UITableViewCell {
             }
             borderLayer?.path = bPath.cgPath
         }
+        else {
+            if let lay = borderLayer {
+                if let _ = lay.superlayer {
+                    lay.removeFromSuperlayer()
+                }
+                borderLayer = nil
+            }
+            
+        }
     }
     
     var borderLayer: CAShapeLayer? {
