@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A12A70A529DB96118AFC769 /* Pods_BasicServicesModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9BBBFD64C50DE060DA0FD9 /* Pods_BasicServicesModule.framework */; };
 		D00C32B82097611300CC5859 /* UINavigationBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00C32B62097611300CC5859 /* UINavigationBarAppearance.swift */; };
+		D00E702923A3AAA2006CADD0 /* UIViewController+Back.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00E702823A3AAA2006CADD0 /* UIViewController+Back.swift */; };
 		D07704B920B7BA7600DFA2EB /* BaseCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07704B720B7BA7600DFA2EB /* BaseCommon.swift */; };
 		D07704BA20B7BA7600DFA2EB /* PropertyListReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07704B820B7BA7600DFA2EB /* PropertyListReadable.swift */; };
 		D07ADF532090310500B35B2B /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07ADF502090310500B35B2B /* ApiError.swift */; };
@@ -29,6 +30,7 @@
 		3C9BBBFD64C50DE060DA0FD9 /* Pods_BasicServicesModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BasicServicesModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B312708715B112D7F02EACBB /* Pods-BasicServicesModule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasicServicesModule.release.xcconfig"; path = "Pods/Target Support Files/Pods-BasicServicesModule/Pods-BasicServicesModule.release.xcconfig"; sourceTree = "<group>"; };
 		D00C32B62097611300CC5859 /* UINavigationBarAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBarAppearance.swift; sourceTree = "<group>"; };
+		D00E702823A3AAA2006CADD0 /* UIViewController+Back.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Back.swift"; sourceTree = "<group>"; };
 		D07704B720B7BA7600DFA2EB /* BaseCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCommon.swift; sourceTree = "<group>"; };
 		D07704B820B7BA7600DFA2EB /* PropertyListReadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListReadable.swift; sourceTree = "<group>"; };
 		D07ADF502090310500B35B2B /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 		D07ADF9B209062FE00B35B2B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				D00E702823A3AAA2006CADD0 /* UIViewController+Back.swift */,
 				D07704B720B7BA7600DFA2EB /* BaseCommon.swift */,
 				D07704B820B7BA7600DFA2EB /* PropertyListReadable.swift */,
 				D0F4771720ADBF8700AAE5B3 /* Cansole.swift */,
@@ -274,6 +277,7 @@
 				D0F4771820ADBF8700AAE5B3 /* Cansole.swift in Sources */,
 				D07ADF542090310500B35B2B /* Result.swift in Sources */,
 				D07704BA20B7BA7600DFA2EB /* PropertyListReadable.swift in Sources */,
+				D00E702923A3AAA2006CADD0 /* UIViewController+Back.swift in Sources */,
 				D07704B920B7BA7600DFA2EB /* BaseCommon.swift in Sources */,
 				D07ADF532090310500B35B2B /* ApiError.swift in Sources */,
 				D07ADF5F2090334500B35B2B /* UIViewController+Navigation.swift in Sources */,
@@ -425,6 +429,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.enn.ecej.BasicServicesModule;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -452,6 +457,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.enn.ecej.BasicServicesModule;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
