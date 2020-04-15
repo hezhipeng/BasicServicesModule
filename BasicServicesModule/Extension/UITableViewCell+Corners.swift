@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension UITableViewCell {
+public extension UITableViewCell {
     
     
     /// 给UITableView的section，增加圆角
@@ -20,13 +20,14 @@ extension UITableViewCell {
     ///   - tableView: UITableView
     ///   - borderWidht: borderWidht 默认没有
     ///   - borderColor: borderColor 默认没有
-    public func add(cornerRadius: CGFloat, indexPath: IndexPath, tableView: UITableView, borderWidth: CGFloat = 0, borderColor: UIColor = .clear) {
+    @objc func add(cornerRadius: CGFloat, indexPath: IndexPath, tableView: UITableView, borderWidth: CGFloat = 0, borderColor: UIColor = .clear) {
         //圆角半径
         let cornerRadius: CGFloat = cornerRadius
         
         //下面为设置圆角操作（通过遮罩实现）
         let sectionCount = tableView.numberOfRows(inSection: indexPath.section)
         let shapeLayer = CAShapeLayer()
+        shapeLayer.backgroundColor = UIColor.clear.cgColor
         self.layer.mask = nil
         
         var bPath = UIBezierPath()
@@ -73,7 +74,7 @@ extension UITableViewCell {
                     bPath = bezierPath
                 }
             default:
-                var bounds = self.bounds
+                let bounds = self.bounds
                 //                bounds.size.height -= 1.0  //这样每一组尾行底部分割线不显示
                 let bezierPath = UIBezierPath.init(rect: bounds)
                 shapeLayer.path = bezierPath.cgPath
