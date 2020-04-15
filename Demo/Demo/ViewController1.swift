@@ -49,7 +49,7 @@ class ViewController1: UIViewController {
         
         DispatchQueue.main.async {
             
-            self.alert("alert")
+            
 
             self.navigationController?.navigationBar.customBar(backgroundColor: .yellow, titleTextAttributes: [NSAttributedString.Key.foregroundColor: UIColor.red,
                                                                                                                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)])

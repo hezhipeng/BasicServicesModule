@@ -34,9 +34,9 @@ extension UIViewController {
                         navigationController = _navigationController
                     }
                     if containerViewController.isKind(of: UINavigationController.self) {
-                        navigationController = containerViewController as! UINavigationController
+                        navigationController = containerViewController as? UINavigationController
                     }
-                    navigationController.popToViewController(targetViewController!, animated: true)
+                    navigationController.popToViewController(targetViewController!, animated: false)
                     if let callback = callback {
                         callback(targetViewController!)
                     }
